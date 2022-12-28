@@ -27,9 +27,6 @@ class EvenFirst
 		  count++;
 		}
 	}
-	for(int i = 0; i<arr1.length; i++)
-	{
-		System.out.println(a[i]);
-	}
+	System.out.print(a);
   }
 }
