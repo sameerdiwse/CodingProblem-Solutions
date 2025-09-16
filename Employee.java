@@ -1,43 +1,53 @@
-class Employee
-{
-   private int empId;
-   private String empName;
-   private String empCity;
-   
-   Employee(int empId, String empName, String empCity)
-   {
-    empId = this.empId;
-	empName = this.empName;
-	empCity = this.empCity;
-   }
-   
-   public void setEmpId(int empId)
-   {
-    this.empId = empId;
-   }
-   
-   public int getEmpId()
-   {
-    return this.empId;
-   }
-   
-   public void setEmpId(String empName)
-   {
-    this.empName = empName;
-   }
-   
-   public String getEmpName()
-   {
-    return this.empName;
-   }
-   
-   public void setEmpCity(String empCity)
-   {
-    this.empCity = empCity;
-   }
-   
-   public String getEmpCity()
-   {
-    return this.empCity;
-   }
+import java.util.*;
+import java.time.*;
+
+class Employee {
+	private int id;
+	private String name;
+	private String department;
+	private double salary;
+	private int age;
+	private String gender;
+	private LocalDate joiningDate;
+
+	public Employee(int id, String name, String department,
+			double salary, int age, String gender, LocalDate joiningDate) {
+		this.id = id;
+		this.name = name;
+		this.department = department;
+		this.salary = salary;
+		this.age = age;
+		this.gender = gender;
+		this.joiningDate = joiningDate;
+	}
+
+	// Getters
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public LocalDate getJoiningDate() {
+		return joiningDate;
+	}
+
 }
