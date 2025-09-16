@@ -7,6 +7,6 @@ class School
 {
 	public static void main (String [] args)
 	{
-		IntStream.range(20,31).filter(x->x>=23).forEach(x->System.out.println(x));
+		IntStream.range(20,51).filter(x->x>=23).forEach(x->System.out.println(x));
 	}
 }
