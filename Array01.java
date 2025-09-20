@@ -15,6 +15,7 @@ public class Array01 {
 		// }
 		// }
 		// }
+//complement is nothing but to get the required num we desire, we'll search for it during traversing the array.
 		Map<Integer, Integer> map = new HashMap<>();
 		IntStream.range(0, arr.length).forEach(i -> {
 			int complement = target - arr[i];

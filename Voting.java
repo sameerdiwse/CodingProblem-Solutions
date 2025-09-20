@@ -8,7 +8,7 @@ public class Voting
 			  {
 				  try
 					  { 
-					  throw new CustomEx("You are not eligible to vote.");
+					  throw new CustomEx("You are not eligible to vote, you are under 18.");
 					  }
 				  catch(CustomEx e)
 					  {
