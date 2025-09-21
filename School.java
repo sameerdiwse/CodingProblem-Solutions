@@ -11,18 +11,22 @@ class School {
 		// Let's say we have one int array, and we have to sort import
 		int[] arr = { 5, 3, 8, 4, 2 };
 
-		for (int outArr = 0; outArr < arr.length; outArr++) {
-			for (int innerArr = 0; innerArr < arr.length - 1 - outArr; innerArr++) {
-				while (arr[innerArr] > arr[innerArr + 1]) {
-					// int temp = arr[innerArr];
-					// arr[innerArr] = arr[innerArr + 1];
-					// arr[innerArr + 1] = temp;
-					Collections.sort(Arrays.asList(arr), innerArr, innerArr+1);
-				}
-			}
+		//finding max out of this array
+		int maxNum = Arrays.stream(arr).max().getAsInt();
+		System.out.println("this is max number: "+maxNum);
 
-		}
-		System.out.println("sorted arr: " + Arrays.toString(arr));
+		// for (int outArr = 0; outArr < arr.length; outArr++) {
+		// 	for (int innerArr = 0; innerArr < arr.length - 1 - outArr; innerArr++) {
+		// 		while (arr[innerArr] > arr[innerArr + 1]) {
+		// 			// int temp = arr[innerArr];
+		// 			// arr[innerArr] = arr[innerArr + 1];
+		// 			// arr[innerArr + 1] = temp;
+		// 			Collections.sort(Arrays.asList(arr), innerArr, innerArr+1);
+		// 		}
+		// 	}
+
+		// }
+		//System.out.println("sorted arr: " + Arrays.toString(arr));
 	}
 
 }
