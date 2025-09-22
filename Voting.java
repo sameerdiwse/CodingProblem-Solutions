@@ -15,6 +15,7 @@ public class Voting
 						 e.printStackTrace(); 
 					  }
 			  }	
+			  System.out.println("this is just a class.");
 	}
     
 
