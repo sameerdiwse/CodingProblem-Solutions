@@ -75,8 +75,11 @@ List<Employee> employees = Arrays.asList(
 		// // employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).collect(Collectors.toList()).forEach(e->System.out.println("this is name: "+e.getName()+" and this is salary: "+e.getSalary()));
 		// employees.stream().map(e->e.getAge()).sorted(Comparator.reverseOrder()).forEach(e->System.out.println(e));
 		//Sort employees first by age, then by salary.
-		employees.stream().sorted(Comparator.comparing((Employee e)->e.getAge()).thenComparing(e->e.getSalary())).collect(Collectors.toList()).forEach(
-		e->System.out.println(e.getName() + " -> "+e.getAge()+" -> "+e.getSalary()));
+		// employees.stream().sorted(Comparator.comparing((Employee e)->e.getAge()).thenComparing(e->e.getSalary())).collect(Collectors.toList()).forEach(
+		// e->System.out.println(e.getName() + " -> "+e.getAge()+" -> "+e.getSalary()));
 		//.then part only works if first condition is not equal.
+		//Sort employees first by salary, then by first name.
+		employees.stream().sorted(Comparator.comparing(Employee::getSalary).thenComparing(Employee::getName)).collect(
+		Collectors.toList()).forEach(e->System.out.println("sorted again: "+e.getName()+" "+e.getSalary()+" "+e.getName()));
 		}
 }
