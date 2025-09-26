@@ -79,7 +79,10 @@ List<Employee> employees = Arrays.asList(
 		// e->System.out.println(e.getName() + " -> "+e.getAge()+" -> "+e.getSalary()));
 		//.then part only works if first condition is not equal.
 		//Sort employees first by salary, then by first name.
-		employees.stream().sorted(Comparator.comparing(Employee::getSalary).thenComparing(Employee::getName)).collect(
-		Collectors.toList()).forEach(e->System.out.println("sorted again: "+e.getName()+" "+e.getSalary()+" "+e.getName()));
+		// employees.stream().sorted(Comparator.comparing(Employee::getSalary).thenComparing(Employee::getName)).collect(
+		// Collectors.toList()).forEach(e->System.out.println("sorted again: "+e.getName()+" "+e.getSalary()+" "+e.getName()));
+		//Get the employee with the highest salary.
+		Employee emp = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).findFirst().get();
+		System.out.println(emp.getName()+" has highest salary of: "+emp.getSalary());
 		}
 }
