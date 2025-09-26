@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.time.*;
 public class Java8Grind
@@ -87,5 +88,9 @@ List<Employee> employees = Arrays.asList(
 		//Get the employee with the lowest age.
 		// int empAge = employees.stream().sorted(Comparator.comparing(Employee::getAge)).findFirst().get().getAge();
 		// System.out.println("this is the lowest age of employee: "+empAge);
-		}
+		// //Get a list of employee full names (name + " " + age).
+		// employees.stream().map(e->e.getName()+"->"+e.getAge()).collect(Collectors.toList()).forEach(System.out::println);;
+		//Get a set of all distinct first names.
+		//employees.stream().map(Employee::getName).distinct().collect(Collectors.toList()).size();
+		 }
 }
