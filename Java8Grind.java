@@ -82,7 +82,10 @@ List<Employee> employees = Arrays.asList(
 		// employees.stream().sorted(Comparator.comparing(Employee::getSalary).thenComparing(Employee::getName)).collect(
 		// Collectors.toList()).forEach(e->System.out.println("sorted again: "+e.getName()+" "+e.getSalary()+" "+e.getName()));
 		//Get the employee with the highest salary.
-		Employee emp = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).findFirst().get();
-		System.out.println(emp.getName()+" has highest salary of: "+emp.getSalary());
+		// Employee emp = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).findFirst().get();
+		// System.out.println(emp.getName()+" has highest salary of: "+emp.getSalary());
+		//Get the employee with the lowest age.
+		// int empAge = employees.stream().sorted(Comparator.comparing(Employee::getAge)).findFirst().get().getAge();
+		// System.out.println("this is the lowest age of employee: "+empAge);
 		}
 }
