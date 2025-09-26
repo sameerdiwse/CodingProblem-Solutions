@@ -67,10 +67,13 @@ List<Employee> employees = Arrays.asList(
 		// String name = employees.stream().filter(e->e.getName().startsWith("M")).findFirst().get().getName();
 		// System.out.println("this is the name we are looking for: "+name);
 		//Get the last employee whose salary is above 50,000.
-		Employee emp = employees.stream().filter(e->e.getSalary()>50000).findFirst().get();
-		System.out.println(emp.getName()+" is the first employee who has salary more than 50000, and the salary is: "+emp.getSalary());
-
-		
+		// Employee emp = employees.stream().filter(e->e.getSalary()>50000).findFirst().get();
+		// System.out.println(emp.getName()+" is the first employee who has salary more than 50000, and the salary is: "+emp.getSalary());
+		//Sort employees by first name ascending.
+		// employees.stream().map(e->e.getName()).sorted(Comparator.reverseOrder()).forEach(System.out::println);;
+		//Sort employees by salary ascending.
+		// employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).collect(Collectors.toList()).forEach(e->System.out.println("this is name: "+e.getName()+" and this is salary: "+e.getSalary()));
+		employees.stream().map(e->e.getAge()).sorted(Comparator.reverseOrder()).forEach(e->System.out.println(e));
 
 
 		}
