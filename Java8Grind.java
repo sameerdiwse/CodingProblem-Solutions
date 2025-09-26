@@ -5,7 +5,7 @@ public class Java8Grind
 {
 	public static void main(String[] args) {
 List<Employee> employees = Arrays.asList(
-				new Employee(1, "Alice", "HR", 55000, 28, "Female", LocalDate.of(2022, 5, 10)),
+				new Employee(1, "Alice", "HR", 49000, 28, "Female", LocalDate.of(2022, 5, 10)),
 				new Employee(2, "Bob", "Finance", 75000, 35, "Male", LocalDate.of(2020, 3, 15)),
 				new Employee(3, "Charlie", "IT", 90000, 30, "Male", LocalDate.of(2019, 7, 1)),
 				new Employee(4, "Diana", "IT", 120000, 42, "Female", LocalDate.of(2018, 1, 25)),
@@ -33,9 +33,45 @@ List<Employee> employees = Arrays.asList(
 		// List<Integer>empList = employees.stream().map(Employee::getAge).filter(e->e<30).collect(Collectors.toList());
 		// empList.forEach(e->System.out.println(e));
 		//Get a list of employees whose first name starts with "A".
-		List<Employee> empList = employees.stream().filter(e->e.getName().startsWith("A")).collect(Collectors.toList());
+		// List<String> empList = employees.stream().map(Employee::getName).filter(d->d.startsWith("A")).collect(Collectors.toList());
+		// empList.forEach(System.out::println);
+		//Get a list of employees whose last name ends with "son".
+		// List<Employee> empList = employees.stream().filter(e->e.getName().endsWith("ula")).collect(Collectors.toList());
+		// empList.forEach(e->System.out.println(e.getName()));
+		//Get a list of employees whose salary is between 40,000 and 60,000.
+		//employees.stream().map(Employee::getSalary).filter(e->e<50000 & e>30000).collect(Collectors.toList()).forEach(e->System.out.println(e));;
+		// Get a list of employees whose age is an even number.
+		//employees.stream().filter(e->e.getAge()%2==0).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+" "+e.getDepartment()+" "+e.getSalary()));
+		//Get a list of employees whose first name contains "an".
+		//employees.stream().map(Employee::getName).filter(e->e.contains("an")).collect(Collectors.toList()).forEach(System.out::println);
+		//Get the top 3 highest paid employees.
+		// employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).limit(3).collect(Collectors.toList()).
+		// 	forEach(e->System.out.println("One of the highest paid employees: "+e.getName()+ "-" +e.getSalary()));
+		//Get the top 5 youngest employees.
+		// employees.stream().sorted(Comparator.comparing(Employee::getAge)).limit(3).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+" has age of "+e.getAge()+" years"));;
+		//Skip the first 2 highest paid employees and get the next one.
+		// Employee empName = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).skip(2).findFirst().get();
+		// System.out.println("this is empName: "+empName.getName()+ " and salary he's getting is "+empName.getSalary());
+		//Skip the first 3 oldest employees and get the next two.
+		// employees.stream().sorted(Comparator.comparing(Employee::getAge).reversed()).skip(3).limit(2).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+" "+e.getAge()));
+		//Get the second highest salary employee.
+		// Employee emp = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).findFirst().get();
+		// System.out.println(emp.getName()+" gets salary of "+emp.getSalary());
+		//Get the last employee after sorting by salary descending.
+		// Double empSal = employees.stream().min(Comparator.comparing(Employee::getSalary)).get().getSalary();
+		// System.out.println("this is empSalary the minimum one: "+empSal);
+		// Get the middle employee after sorting by age ascending.
+		// Employee employee = employees.stream().sorted(Comparator.comparing(Employee::getAge)).skip(employees.size()/2).findFirst().get();
+		// System.out.println(employee.getAge()+" this is the middle one "+employee.getName());
+		// Get the first employee whose first name starts with "M"
+		// String name = employees.stream().filter(e->e.getName().startsWith("M")).findFirst().get().getName();
+		// System.out.println("this is the name we are looking for: "+name);
+		//Get the last employee whose salary is above 50,000.
+		Employee emp = employees.stream().filter(e->e.getSalary()>50000).findFirst().get();
+		System.out.println(emp.getName()+" is the first employee who has salary more than 50000, and the salary is: "+emp.getSalary());
+
+		
+
 
 		}
-
-
 }
