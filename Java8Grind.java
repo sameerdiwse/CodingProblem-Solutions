@@ -146,5 +146,7 @@ List<Employee> employees = Arrays.asList(
 		//Find the employee with the shortest last name.
 		// Employee emp = employees.stream().min(Comparator.comparingInt((Employee e)->e.getName().length())).get(); 
 		// System.out.println(emp.getName()+" and length is: "+emp.getName().length());
+		// int minSize = employees.stream().mapToInt(e->e.getName().length()).min().getAsInt();	
+		// employees.stream().filter(e->e.getName().length()==minSize).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+" "+e.getName().length()));
 	}
 }
