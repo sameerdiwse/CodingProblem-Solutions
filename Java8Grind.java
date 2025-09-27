@@ -144,7 +144,7 @@ List<Employee> employees = Arrays.asList(
 		// String empName = employees.stream().sorted(Comparator.comparingInt((Employee e)->e.getName().length()).reversed()).findFirst().get().getName();
 		// System.out.println("emp name: "+empName);
 		//Find the employee with the shortest last name.
-		Employee emp = employees.stream().min(Comparator.comparingInt((Employee e)->e.getName().length())).get(); 
-		System.out.println(emp.getName()+" and length is: "+emp.getName().length());
+		// Employee emp = employees.stream().min(Comparator.comparingInt((Employee e)->e.getName().length())).get(); 
+		// System.out.println(emp.getName()+" and length is: "+emp.getName().length());
 	}
 }
