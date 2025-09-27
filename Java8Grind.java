@@ -1,13 +1,16 @@
-import java.util.*;
-import java.util.stream.Collector;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
-import java.time.*;
 public class Java8Grind
 {
 	public static void main(String[] args) {
 List<Employee> employees = Arrays.asList(
-				new Employee(1, "Alice", "HR", 49000, 28, "Female", LocalDate.of(2022, 5, 10)),
-				new Employee(2, "Bob", "Finance", 75000, 35, "Male", LocalDate.of(2020, 3, 15)),
+				new Employee(1, "Diana", "HR", 49000, 28, "Female", LocalDate.of(2022, 5, 10)),
+				new Employee(2, "Bob", "Finance", 75000, 28, "Male", LocalDate.of(2020, 3, 15)),
 				new Employee(3, "Charlie", "IT", 90000, 30, "Male", LocalDate.of(2019, 7, 1)),
 				new Employee(4, "Diana", "IT", 120000, 42, "Female", LocalDate.of(2018, 1, 25)),
 				new Employee(5, "Ethan", "Finance", 120000, 24, "Male", LocalDate.of(2023, 8, 12)),
@@ -92,5 +95,56 @@ List<Employee> employees = Arrays.asList(
 		// employees.stream().map(e->e.getName()+"->"+e.getAge()).collect(Collectors.toList()).forEach(System.out::println);;
 		//Get a set of all distinct first names.
 		//employees.stream().map(Employee::getName).distinct().collect(Collectors.toList()).size();
-		 }
+		//Get a list of salaries only.
+		//employees.stream().map(Employee::getSalary).collect(Collectors.toList()).forEach(System.out::println);
+		//Get a list of unique salaries.
+		// employees.stream().map(e->e.getSalary()).distinct().sorted().collect(Collectors.toList()).forEach(e->System.out.println("this is the salaries: "+e));
+		//Get a map of employee id → full name.
+		// employees.stream().collect(Collectors.toMap(e->e.getName(), e->e.getSalary())).forEach((name, sal)->System.out.println(
+		// "this is name: "+name+" and this is salary: "+sal));
+		// Get a map of employee id → salary. 
+		// employees.stream().collect(Collectors.toMap(e->e.getId(), e->e.getSalary())).forEach((id, sal)->System.out.println(
+		// "this is id: "+id+" this is salary: "+sal));
+
+		//Get a map of last name → list of employees with that last name.
+		// Map<String, List<Employee>> emp = employees.stream().collect(Collectors.groupingBy(Employee::getName));
+		// emp.forEach((name, emps)->{
+		// 	System.out.println("employee name is: "+name);
+		// 	emps.forEach(e->System.out.println(name+"'s salary: "+e.getSalary()+" and employee age is"+e.getAge()));
+		// });
+		// //Get a map of age → count of employees with that age.
+		// Map<Integer, List<Employee>> emp = employees.stream().collect(Collectors.groupingBy(Employee::getAge));
+		// emp.forEach((age, emps)->{
+		// System.out.println("we have "+emps.size()+" employees with age of "+age+" years.");
+		// k);
+		// Join all employee names with comma.
+		// String empNames = employees.stream().map(e->e.getName()).collect(Collectors.joining(", "));
+		// System.out.println(empNames);
+		//Join all names with age.
+		// Map<String, Integer> empMap = employees.stream().collect(Collectors.toMap(Employee::getName, Employee::getAge, ((first, second)->second)));
+		// empMap.forEach((name, age)->System.out.println(name+":"+age));
+		//Find any employee whose salary > 70,000.
+		// employees.stream().filter(e->e.getSalary()>70000).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+" "+e.getSalary()));
+		//Find the first employee whose age < 25.
+		// Employee emp = employees.stream().filter(e->e.getAge()<25).findFirst().get();
+		// System.out.println(emp.getName()+" "+emp.getAge());
+		//Find the first employee whose first name starts with "R".
+		// String empName = employees.stream().filter(e -> e.getName().startsWith("R")).findFirst().get().getName();
+		// System.out.println(empName);
+		//Find any employee whose last name contains "son".
+		// int empSize = employees.stream().filter(e->e.getName().contains("Ra")).collect(Collectors.toList()).size();
+		// System.out.println("empSize: "+empSize);
+		//Find an employee by id.
+		// Employee employee = employees.stream().filter(e->e.getId()==7).findFirst().get(); 
+		// System.out.println(employee.getName()+" "+employee.getAge()+" "+employee.getId());
+		// Find the first employee whose salary equals the average salary.
+		//  List<Employee> emp = employees.stream().filter(e->e.getSalary()>employees.stream().mapToDouble(Employee::getSalary).average().orElse(0)).collect(Collectors.toList());
+		// emp.forEach(e->System.out.println(e.getName()+" "+e.getSalary()));
+		// Find the employee with the longest first name.
+		// String empName = employees.stream().sorted(Comparator.comparingInt((Employee e)->e.getName().length()).reversed()).findFirst().get().getName();
+		// System.out.println("emp name: "+empName);
+		//Find the employee with the shortest last name.
+		Employee emp = employees.stream().min(Comparator.comparingInt((Employee e)->e.getName().length())).get(); 
+		System.out.println(emp.getName()+" and length is: "+emp.getName().length());
+	}
 }
