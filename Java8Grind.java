@@ -148,5 +148,9 @@ List<Employee> employees = Arrays.asList(
 		// System.out.println(emp.getName()+" and length is: "+emp.getName().length());
 		// int minSize = employees.stream().mapToInt(e->e.getName().length()).min().getAsInt();	
 		// employees.stream().filter(e->e.getName().length()==minSize).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+" "+e.getName().length()));
+		// Find the first employee whose full name contains "John".
+		// Employee em = employees.stream().filter(e->e.getName().contains("John")).findFirst().orElse(null);
+		// System.out.println(em!=null ? em.getId()+" "+em.getName() : "no records found");
+		
 	}
 }
