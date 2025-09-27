@@ -1,3 +1,4 @@
+		// System.out.println(emp!=null ? emp.getName()+" gets "+emp.getSalary():"no record found");
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -5,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 public class Java8Grind
 {
 	public static void main(String[] args) {
@@ -22,7 +24,7 @@ List<Employee> employees = Arrays.asList(
 				new Employee(11, "Kevin", "IT", 78000, 33, "Male", LocalDate.of(2021, 9, 10)),
 				new Employee(12, "Laura", "Finance", 67000, 29, "Female", LocalDate.of(2019, 12, 22)),
 				new Employee(13, "Mike", "HR", 52000, 26, "Male", LocalDate.of(2020, 5, 18)),
-				new Employee(14, "Nina", "Marketing", 88000, 36, "Female", LocalDate.of(2018, 7, 4)),
+				new Employee(14, "Nina", "Marketing", 1009, 36, "Female", LocalDate.of(2018, 7, 4)),
 				new Employee(15, "Oscar", "IT", 110000, 41, "Male", LocalDate.of(2017, 10, 29)),
 				new Employee(16, "Paula", "Finance", 62000, 28, "Female", LocalDate.of(2022, 3, 16)),
 				new Employee(17, "Quentin", "HR", 48000, 23, "Male", LocalDate.of(2023, 1, 8)),
@@ -106,7 +108,7 @@ List<Employee> employees = Arrays.asList(
 		// employees.stream().collect(Collectors.toMap(e->e.getId(), e->e.getSalary())).forEach((id, sal)->System.out.println(
 		// "this is id: "+id+" this is salary: "+sal));
 
-		//Get a map of last name → list of employees with that last name.
+		// System.out.println(empAge);	
 		// Map<String, List<Employee>> emp = employees.stream().collect(Collectors.groupingBy(Employee::getName));
 		// emp.forEach((name, emps)->{
 		// 	System.out.println("employee name is: "+name);
@@ -151,6 +153,21 @@ List<Employee> employees = Arrays.asList(
 		// Find the first employee whose full name contains "John".
 		// Employee em = employees.stream().filter(e->e.getName().contains("John")).findFirst().orElse(null);
 		// System.out.println(em!=null ? em.getId()+" "+em.getName() : "no records found");
+		// System.out.println(emp!=null ? emp.getName()+" gets "+emp.getSalary():"no record found");
+		// Employee emp = employees.stream().filter(e->BigInteger.valueOf((int)e.getSalary()).isProbablePrime(50)).findFirst().get();
+		// System.out.println(emp!=null ? emp.getName()+" gets "+emp.getSalary():"no record found");
+		//Count employees with salary > 50,000.
+		// Long emp = employees.stream().filter(e->e.getSalary()>50000).collect(Collectors.counting()); 
+		// System.out.println("there are "+emp+" employees who has salary more than 50000.");
+		//Count employees with age < 30.
+		// Long empAge = employees.stream().filter(e->e.getAge()<30).collect(Collectors.counting());
+		// System.out.println(empAge);	
+		//Count employees with first name starting with "A".
+		// employees.stream().filter(e->e.getName().startsWith("B")).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()));
+		//Sum of all employee salaries.
+		// System.out.println("sum of employee's salaries: "+employees.stream().mapToDouble(e->e.getSalary()).sum());
+		
+		
 		
 	}
 }
