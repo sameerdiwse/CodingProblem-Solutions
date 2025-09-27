@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 public class Java8Grind
@@ -166,6 +167,9 @@ List<Employee> employees = Arrays.asList(
 		// employees.stream().filter(e->e.getName().startsWith("B")).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()));
 		//Sum of all employee salaries.
 		// System.out.println("sum of employee's salaries: "+employees.stream().mapToDouble(e->e.getSalary()).sum());
+		//Average salary of all employees.
+		Double empAvgSal = employees.stream().mapToDouble(e->e.getSalary()).average().getAsDouble();
+		System.out.println("double: "+empAvgSal);
 		
 		
 		
