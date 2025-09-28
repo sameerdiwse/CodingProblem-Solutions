@@ -14,22 +14,22 @@ public class Java8Grind
 List<Employee> employees = Arrays.asList(
 				new Employee(1, "Diana", "HR", 49000, 28, "Female", LocalDate.of(2022, 5, 10)),
 				new Employee(2, "Bob", "Finance", 75000, 28, "Male", LocalDate.of(2020, 3, 15)),
-				new Employee(3, "Charlie", "IT", 90000, 30, "Male", LocalDate.of(2019, 7, 1)),
-				new Employee(4, "Diana", "IT", 120000, 42, "Female", LocalDate.of(2018, 1, 25)),
+				new Employee(3, "Charlie", "IT", 29000, 30, "Male", LocalDate.of(2019, 7, 1)),
+				new Employee(4, "Ciana", "IT", 120000, 42, "Female", LocalDate.of(2018, 1, 25)),
 				new Employee(5, "Ethan", "Finance", 120000, 24, "Male", LocalDate.of(2023, 8, 12)),
 				new Employee(6, "Fiona", "HR", 60000, 31, "Female", LocalDate.of(2021, 11, 5)),
 				new Employee(7, "George", "Marketing", 70000, 29, "Male", LocalDate.of(2022, 2, 20)),
 				new Employee(8, "Hannah", "IT", 85000, 27, "Female", LocalDate.of(2023, 3, 14)),
 				new Employee(9, "Ian", "Finance", 95000, 38, "Male", LocalDate.of(2017, 6, 18)),
-				new Employee(10, "Jenny", "Marketing", 50000, 25, "Female", LocalDate.of(2024, 4, 1)),
-				new Employee(11, "Kevin", "IT", 78000, 33, "Male", LocalDate.of(2021, 9, 10)),
+				new Employee(10, "Jenny", "Marketing", 50000, 17, "Female", LocalDate.of(2024, 4, 1)),
+				new Employee(11, "Cevin", "IT", 78000, 33, "Male", LocalDate.of(2021, 9, 10)),
 				new Employee(12, "Laura", "Finance", 67000, 29, "Female", LocalDate.of(2019, 12, 22)),
 				new Employee(13, "Mike", "HR", 52000, 26, "Male", LocalDate.of(2020, 5, 18)),
 				new Employee(14, "Nina", "Marketing", 1009, 36, "Female", LocalDate.of(2018, 7, 4)),
 				new Employee(15, "Oscar", "IT", 110000, 41, "Male", LocalDate.of(2017, 10, 29)),
 				new Employee(16, "Paula", "Finance", 62000, 28, "Female", LocalDate.of(2022, 3, 16)),
 				new Employee(17, "Quentin", "HR", 48000, 23, "Male", LocalDate.of(2023, 1, 8)),
-				new Employee(18, "Rachel", "Marketing", 93000, 34, "Female", LocalDate.of(2019, 4, 25)),
+				new Employee(18, "Cachel", "Marketing", 93000, 34, "Female", LocalDate.of(2019, 4, 25)),
 				new Employee(19, "Steve", "IT", 99000, 39, "Male", LocalDate.of(2020, 11, 12)),
 				new Employee(20, "Tina", "Finance", 56000, 27, "Female", LocalDate.of(2024, 2, 5)));
 	
@@ -168,10 +168,36 @@ List<Employee> employees = Arrays.asList(
 		//Sum of all employee salaries.
 		// System.out.println("sum of employee's salaries: "+employees.stream().mapToDouble(e->e.getSalary()).sum());
 		//Average salary of all employees.
-		Double empAvgSal = employees.stream().mapToDouble(e->e.getSalary()).average().getAsDouble();
-		System.out.println("double: "+empAvgSal);
-		
-		
-		
+		//Double empAvgSal = employees.stream().mapToDouble(e->e.getSalary()).average().getAsDouble();
+		//System.out.println("double: "+empAvgSal);
+		//Max salary of employees under 40.
+		// System.out.println("max sal: "+employees.stream().filter(e->e.getAge()<40).mapToDouble(Employee::getSalary).max().getAsDouble());		
+		//Min salary of employees over 25.
+		//double maxBelow = employees.stream().filter(e->e.getAge()<25).mapToDouble(e->e.getSalary()).max().getAsDouble();
+		//System.out.println(maxBelow);
+		//Total number of employees above 35.
+		// System.out.println("doing: "+employees.stream().filter(e->e.getAge()>25).collect(Collectors.counting()));
+		//Average age of employees with salary > 50,000.
+		//double em = employees.stream().filter(e->e.getSalary()>50000).mapToInt(Employee::getAge).average().getAsDouble();
+		//System.out.println("em: "+em);
+		//Total salary of employees whose first name starts with "M".
+		// System.out.println("this is fine: "+employees.stream().filter(e->e.getName().startsWith("C")).mapToDouble(Employee::getSalary).sum());
+		//Check if all employees are older than 18.
+		// System.out.println("this is boolean: "+employees.stream().allMatch(e->e.getAge()>18));
+		//Check if any employee has salary > 100,000.
+		// System.out.println("employees has salary more than 10000: "+employees.stream().allMatch(e->e.getSalary()>100000));
+		//Check if no employee has age < 18.
+		// System.out.println("not less than 18: "+employees.stream().noneMatch(e->e.getAge()<18));
+		//Check if any employee has last name "Smith".
+		// System.out.println("Do we have an employee having name as Laura: "+employees.stream().anyMatch(e->e.getName().equals("Laura")));
+		//Check if no employee has negative salary.
+		// System.out.println(employees.stream().anyMatch(e->e.getSalary()<0) ? "Negative" : "Positive");
+		//Check if all employees have salary >= 30,000.
+		// System.out.println("Does everyone getting >=30k: "+employees.stream().allMatch(e->e.getSalary()>=30000));
+		//Check if any employee has full name containing "King".
+		// System.out.println(employees.stream().anyMatch(e->e.getName().contains("nny")));
+		// employees.stream().map(Employee::getName).filter(e->e.contains("nny")).collect(Collectors.toList()).forEach(e->System.out.println(e));
+		//
+
 	}
 }
