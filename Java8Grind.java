@@ -21,7 +21,7 @@ List<Employee> employees = Arrays.asList(
 				new Employee(7, "George", "Marketing", 70000, 29, "Male", LocalDate.of(2022, 2, 20)),
 				new Employee(8, "Hannah", "IT", 85000, 27, "Female", LocalDate.of(2023, 3, 14)),
 				new Employee(9, "Ian", "Finance", 95000, 38, "Male", LocalDate.of(2017, 6, 18)),
-				new Employee(10, "Jenny", "Marketing", 50000, 17, "Female", LocalDate.of(2024, 4, 1)),
+				new Employee(10, "Jenny", "Marketing", 50000, 19, "Female", LocalDate.of(2024, 4, 1)),
 				new Employee(11, "Cevin", "IT", 78000, 33, "Male", LocalDate.of(2021, 9, 10)),
 				new Employee(12, "Laura", "Finance", 67000, 29, "Female", LocalDate.of(2019, 12, 22)),
 				new Employee(13, "Mike", "HR", 52000, 26, "Male", LocalDate.of(2020, 5, 18)),
@@ -197,7 +197,19 @@ List<Employee> employees = Arrays.asList(
 		//Check if any employee has full name containing "King".
 		// System.out.println(employees.stream().anyMatch(e->e.getName().contains("nny")));
 		// employees.stream().map(Employee::getName).filter(e->e.contains("nny")).collect(Collectors.toList()).forEach(e->System.out.println(e));
-		//
+		//Check if all employees have age < 60.
+		// System.out.println(employees.stream().allMatch(e->e.getAge()<60 && e.getAge()>18));
+		//Check if no employee has first name starting with "Z".
+		// System.out.println(employees.stream().noneMatch(e->e.getName().toUpperCase().startsWith("z")) ? "no match found" : "match found");
+		//Group employees by department
+		employees.stream().collect(Collectors.groupingBy(Employee::getDepartment)).forEach((dep, emp)->
+				{
+					System.out.println("-> "+dep);
+						emp.forEach(e->
+						{
+							System.out.println(e.getName());
+						});
+				});
 
 	}
 }
