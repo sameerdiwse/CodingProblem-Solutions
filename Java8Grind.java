@@ -1,4 +1,3 @@
-		// System.out.println(emp!=null ? emp.getName()+" gets "+emp.getSalary():"no record found");
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -6,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 public class Java8Grind
@@ -202,14 +202,28 @@ List<Employee> employees = Arrays.asList(
 		//Check if no employee has first name starting with "Z".
 		// System.out.println(employees.stream().noneMatch(e->e.getName().toUpperCase().startsWith("z")) ? "no match found" : "match found");
 		//Group employees by department
-		employees.stream().collect(Collectors.groupingBy(Employee::getDepartment)).forEach((dep, emp)->
-				{
-					System.out.println("-> "+dep);
-						emp.forEach(e->
-						{
-							System.out.println(e.getName());
-						});
-				});
+		//employees.stream().collect(Collectors.groupingBy(Employee::getDepartment)).forEach((dep, emp)->
+				//{
+					//System.out.println(dep+" has "+emp.size()+" employees.");
+						//int[] num = {1};
+						//// AtomicInteger num = new AtomicInteger(1);
+						//emp.forEach(e->
+						//{
+						//	System.out.println(num[0]+++" "+e.getName());
+						//});
+				//});
 
+				
+				int[] in = {12,3,5,23,9,34};
+				System.out.println(Arrays.stream(in).max().getAsInt());
+				Integer[] intt = {12,3,5,23,9,34};
+				System.out.println(Arrays.stream(intt).mapToInt(Integer::intValue).max().getAsInt());
+				System.out.println(Arrays.stream(intt).max(Integer::compareTo).get());
+				Employee maxEmp = employees.stream().max(Comparator.comparing(Employee::getSalary)).get();
+		//Get max salaried employee.
+		//employees.stream().max(Comparator.comparing(Employee::getSalary)).get();
+		employees.stream().mapToDouble(Employee::getSalary).max().getAsDouble();
+		String info = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).map(e->e.getName()+" "+e.getSalary()).findFirst().get();	
+		System.out.println(info);
 	}
 }
