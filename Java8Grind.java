@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-public class Java8Grind
-{
+
+public class Java8Grind {
 	public static void main(String[] args) {
-List<Employee> employees = Arrays.asList(
+		List<Employee> employees = Arrays.asList(
 				new Employee(1, "Diana", "HR", 49000, 28, "Female", LocalDate.of(2022, 5, 10)),
 				new Employee(2, "Bob", "Finance", 75000, 28, "Male", LocalDate.of(2020, 3, 15)),
 				new Employee(3, "Charlie", "IT", 29000, 30, "Male", LocalDate.of(2019, 7, 1)),
@@ -29,200 +29,272 @@ List<Employee> employees = Arrays.asList(
 				new Employee(18, "Cachel", "Marketing", 93000, 34, "Female", LocalDate.of(2019, 4, 25)),
 				new Employee(19, "Steve", "IT", 99000, 39, "Male", LocalDate.of(2020, 11, 12)),
 				new Employee(20, "Tina", "Finance", 56000, 27, "Female", LocalDate.of(2024, 2, 5)));
-	
-		//Get a list of employees with salary greater than 50,000.
-		// List<Employee> empList = employees.stream().filter(e->e.getSalary()>78000).collect(Collectors.toList());
-		// empList.forEach(e->System.out.println(e.getName() + "has salary of: "+e.getSalary()));
-		//Get a list of employees below 30 years of age.
-		// List<Integer>empList = employees.stream().map(Employee::getAge).filter(e->e<30).collect(Collectors.toList());
+
+		// Get a list of employees with salary greater than 50,000.
+		// List<Employee> empList =
+		// employees.stream().filter(e->e.getSalary()>78000).collect(Collectors.toList());
+		// empList.forEach(e->System.out.println(e.getName() + "has salary of:
+		// "+e.getSalary()));
+		// Get a list of employees below 30 years of age.
+		// List<Integer>empList =
+		// employees.stream().map(Employee::getAge).filter(e->e<30).collect(Collectors.toList());
 		// empList.forEach(e->System.out.println(e));
-		//Get a list of employees whose first name starts with "A".
-		// List<String> empList = employees.stream().map(Employee::getName).filter(d->d.startsWith("A")).collect(Collectors.toList());
+		// Get a list of employees whose first name starts with "A".
+		// List<String> empList =
+		// employees.stream().map(Employee::getName).filter(d->d.startsWith("A")).collect(Collectors.toList());
 		// empList.forEach(System.out::println);
-		//Get a list of employees whose last name ends with "son".
-		// List<Employee> empList = employees.stream().filter(e->e.getName().endsWith("ula")).collect(Collectors.toList());
+		// Get a list of employees whose last name ends with "son".
+		// List<Employee> empList =
+		// employees.stream().filter(e->e.getName().endsWith("ula")).collect(Collectors.toList());
 		// empList.forEach(e->System.out.println(e.getName()));
-		//Get a list of employees whose salary is between 40,000 and 60,000.
-		//employees.stream().map(Employee::getSalary).filter(e->e<50000 & e>30000).collect(Collectors.toList()).forEach(e->System.out.println(e));;
+		// Get a list of employees whose salary is between 40,000 and 60,000.
+		// employees.stream().map(Employee::getSalary).filter(e->e<50000 &
+		// e>30000).collect(Collectors.toList()).forEach(e->System.out.println(e));;
 		// Get a list of employees whose age is an even number.
-		//employees.stream().filter(e->e.getAge()%2==0).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+" "+e.getDepartment()+" "+e.getSalary()));
-		//Get a list of employees whose first name contains "an".
-		//employees.stream().map(Employee::getName).filter(e->e.contains("an")).collect(Collectors.toList()).forEach(System.out::println);
-		//Get the top 3 highest paid employees.
+		// employees.stream().filter(e->e.getAge()%2==0).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+"
+		// "+e.getDepartment()+" "+e.getSalary()));
+		// Get a list of employees whose first name contains "an".
+		// employees.stream().map(Employee::getName).filter(e->e.contains("an")).collect(Collectors.toList()).forEach(System.out::println);
+		// Get the top 3 highest paid employees.
 		// employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).limit(3).collect(Collectors.toList()).
-		// 	forEach(e->System.out.println("One of the highest paid employees: "+e.getName()+ "-" +e.getSalary()));
-		//Get the top 5 youngest employees.
-		// employees.stream().sorted(Comparator.comparing(Employee::getAge)).limit(3).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+" has age of "+e.getAge()+" years"));;
-		//Skip the first 2 highest paid employees and get the next one.
-		// Employee empName = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).skip(2).findFirst().get();
-		// System.out.println("this is empName: "+empName.getName()+ " and salary he's getting is "+empName.getSalary());
-		//Skip the first 3 oldest employees and get the next two.
-		// employees.stream().sorted(Comparator.comparing(Employee::getAge).reversed()).skip(3).limit(2).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+" "+e.getAge()));
-		//Get the second highest salary employee.
-		// Employee emp = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).findFirst().get();
+		// forEach(e->System.out.println("One of the highest paid employees:
+		// "+e.getName()+ "-" +e.getSalary()));
+		// Get the top 5 youngest employees.
+		// employees.stream().sorted(Comparator.comparing(Employee::getAge)).limit(3).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+"
+		// has age of "+e.getAge()+" years"));;
+		// Skip the first 2 highest paid employees and get the next one.
+		// Employee empName =
+		// employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).skip(2).findFirst().get();
+		// System.out.println("this is empName: "+empName.getName()+ " and salary he's
+		// getting is "+empName.getSalary());
+		// Skip the first 3 oldest employees and get the next two.
+		// employees.stream().sorted(Comparator.comparing(Employee::getAge).reversed()).skip(3).limit(2).collect(Collectors.toList()).
+		// forEach(e->System.out.println(e.getName()+"
+		// "+e.getAge()));
+		// Get the second highest salary employee.
+		// Employee emp =
+		// employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).findFirst().get();
 		// System.out.println(emp.getName()+" gets salary of "+emp.getSalary());
-		//Get the last employee after sorting by salary descending.
-		// Double empSal = employees.stream().min(Comparator.comparing(Employee::getSalary)).get().getSalary();
+		// Get the last employee after sorting by salary descending.
+		// Double empSal =
+		// employees.stream().min(Comparator.comparing(Employee::getSalary)).get().getSalary();
 		// System.out.println("this is empSalary the minimum one: "+empSal);
 		// Get the middle employee after sorting by age ascending.
-		// Employee employee = employees.stream().sorted(Comparator.comparing(Employee::getAge)).skip(employees.size()/2).findFirst().get();
-		// System.out.println(employee.getAge()+" this is the middle one "+employee.getName());
+		// Employee employee =
+		// employees.stream().sorted(Comparator.comparing(Employee::getAge)).skip(employees.size()/2).findFirst().get();
+		// System.out.println(employee.getAge()+" this is the middle one
+		// "+employee.getName());
 		// Get the first employee whose first name starts with "M"
-		// String name = employees.stream().filter(e->e.getName().startsWith("M")).findFirst().get().getName();
+		// String name =
+		// employees.stream().filter(e->e.getName().startsWith("M")).findFirst().get().getName();
 		// System.out.println("this is the name we are looking for: "+name);
-		//Get the last employee whose salary is above 50,000.
-		// Employee emp = employees.stream().filter(e->e.getSalary()>50000).findFirst().get();
-		// System.out.println(emp.getName()+" is the first employee who has salary more than 50000, and the salary is: "+emp.getSalary());
-		//Sort employees by first name ascending.
+		// Get the last employee whose salary is above 50,000.
+		// Employee emp =
+		// employees.stream().filter(e->e.getSalary()>50000).findFirst().get();
+		// System.out.println(emp.getName()+" is the first employee who has salary more
+		// than 50000, and the salary is: "+emp.getSalary());
+		// Sort employees by first name ascending.
 		// employees.stream().map(e->e.getName()).sorted(Comparator.reverseOrder()).forEach(System.out::println);;
-		//Sort employees by salary ascending.
-		// // employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).collect(Collectors.toList()).forEach(e->System.out.println("this is name: "+e.getName()+" and this is salary: "+e.getSalary()));
+		// Sort employees by salary ascending.
+		// //
+		// employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).collect(Collectors.toList()).forEach(e->System.out.println("this
+		// is name: "+e.getName()+" and this is salary: "+e.getSalary()));
 		// employees.stream().map(e->e.getAge()).sorted(Comparator.reverseOrder()).forEach(e->System.out.println(e));
-		//Sort employees first by age, then by salary.
-		// employees.stream().sorted(Comparator.comparing((Employee e)->e.getAge()).thenComparing(e->e.getSalary())).collect(Collectors.toList()).forEach(
+		// Sort employees first by age, then by salary.
+		// employees.stream().sorted(Comparator.comparing((Employee
+		// e)->e.getAge()).thenComparing(e->e.getSalary())).collect(Collectors.toList()).forEach(
 		// e->System.out.println(e.getName() + " -> "+e.getAge()+" -> "+e.getSalary()));
-		//.then part only works if first condition is not equal.
-		//Sort employees first by salary, then by first name.
+		// .then part only works if first condition is not equal.
+		// Sort employees first by salary, then by first name.
 		// employees.stream().sorted(Comparator.comparing(Employee::getSalary).thenComparing(Employee::getName)).collect(
-		// Collectors.toList()).forEach(e->System.out.println("sorted again: "+e.getName()+" "+e.getSalary()+" "+e.getName()));
-		//Get the employee with the highest salary.
-		// Employee emp = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).findFirst().get();
+		// Collectors.toList()).forEach(e->System.out.println("sorted again:
+		// "+e.getName()+" "+e.getSalary()+" "+e.getName()));
+		// Get the employee with the highest salary.
+		// Employee emp =
+		// employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).findFirst().get();
 		// System.out.println(emp.getName()+" has highest salary of: "+emp.getSalary());
-		//Get the employee with the lowest age.
-		// int empAge = employees.stream().sorted(Comparator.comparing(Employee::getAge)).findFirst().get().getAge();
+		// Get the employee with the lowest age.
+		// int empAge =
+		// employees.stream().sorted(Comparator.comparing(Employee::getAge)).findFirst().get().getAge();
 		// System.out.println("this is the lowest age of employee: "+empAge);
 		// //Get a list of employee full names (name + " " + age).
 		// employees.stream().map(e->e.getName()+"->"+e.getAge()).collect(Collectors.toList()).forEach(System.out::println);;
-		//Get a set of all distinct first names.
-		//employees.stream().map(Employee::getName).distinct().collect(Collectors.toList()).size();
-		//Get a list of salaries only.
-		//employees.stream().map(Employee::getSalary).collect(Collectors.toList()).forEach(System.out::println);
-		//Get a list of unique salaries.
-		// employees.stream().map(e->e.getSalary()).distinct().sorted().collect(Collectors.toList()).forEach(e->System.out.println("this is the salaries: "+e));
-		//Get a map of employee id → full name.
-		// employees.stream().collect(Collectors.toMap(e->e.getName(), e->e.getSalary())).forEach((name, sal)->System.out.println(
+		// Get a set of all distinct first names.
+		// employees.stream().map(Employee::getName).distinct().collect(Collectors.toList()).size();
+		// Get a list of salaries only.
+		// employees.stream().map(Employee::getSalary).collect(Collectors.toList()).forEach(System.out::println);
+		// Get a list of unique salaries.
+		// employees.stream().map(e->e.getSalary()).distinct().sorted().collect(Collectors.toList()).forEach(e->System.out.println("this
+		// is the salaries: "+e));
+		// Get a map of employee id → full name.
+		// employees.stream().collect(Collectors.toMap(e->e.getName(),
+		// e->e.getSalary())).forEach((name, sal)->System.out.println(
 		// "this is name: "+name+" and this is salary: "+sal));
-		// Get a map of employee id → salary. 
-		// employees.stream().collect(Collectors.toMap(e->e.getId(), e->e.getSalary())).forEach((id, sal)->System.out.println(
+		// Get a map of employee id → salary.
+		// employees.stream().collect(Collectors.toMap(e->e.getId(),
+		// e->e.getSalary())).forEach((id, sal)->System.out.println(
 		// "this is id: "+id+" this is salary: "+sal));
 
-		// System.out.println(empAge);	
-		// Map<String, List<Employee>> emp = employees.stream().collect(Collectors.groupingBy(Employee::getName));
+		// System.out.println(empAge);
+		// Map<String, List<Employee>> emp =
+		// employees.stream().collect(Collectors.groupingBy(Employee::getName));
 		// emp.forEach((name, emps)->{
-		// 	System.out.println("employee name is: "+name);
-		// 	emps.forEach(e->System.out.println(name+"'s salary: "+e.getSalary()+" and employee age is"+e.getAge()));
+		// System.out.println("employee name is: "+name);
+		// emps.forEach(e->System.out.println(name+"'s salary: "+e.getSalary()+" and
+		// employee age is"+e.getAge()));
 		// });
 		// //Get a map of age → count of employees with that age.
-		// Map<Integer, List<Employee>> emp = employees.stream().collect(Collectors.groupingBy(Employee::getAge));
+		// Map<Integer, List<Employee>> emp =
+		// employees.stream().collect(Collectors.groupingBy(Employee::getAge));
 		// emp.forEach((age, emps)->{
-		// System.out.println("we have "+emps.size()+" employees with age of "+age+" years.");
+		// System.out.println("we have "+emps.size()+" employees with age of "+age+"
+		// years.");
 		// k);
 		// Join all employee names with comma.
-		// String empNames = employees.stream().map(e->e.getName()).collect(Collectors.joining(", "));
+		// String empNames =
+		// employees.stream().map(e->e.getName()).collect(Collectors.joining(", "));
 		// System.out.println(empNames);
-		//Join all names with age.
-		// Map<String, Integer> empMap = employees.stream().collect(Collectors.toMap(Employee::getName, Employee::getAge, ((first, second)->second)));
+		// Join all names with age.
+		// Map<String, Integer> empMap =
+		// employees.stream().collect(Collectors.toMap(Employee::getName,
+		// Employee::getAge, ((first, second)->second)));
 		// empMap.forEach((name, age)->System.out.println(name+":"+age));
-		//Find any employee whose salary > 70,000.
-		// employees.stream().filter(e->e.getSalary()>70000).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+" "+e.getSalary()));
-		//Find the first employee whose age < 25.
+		// Find any employee whose salary > 70,000.
+		// employees.stream().filter(e->e.getSalary()>70000).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+"
+		// "+e.getSalary()));
+		// Find the first employee whose age < 25.
 		// Employee emp = employees.stream().filter(e->e.getAge()<25).findFirst().get();
 		// System.out.println(emp.getName()+" "+emp.getAge());
-		//Find the first employee whose first name starts with "R".
-		// String empName = employees.stream().filter(e -> e.getName().startsWith("R")).findFirst().get().getName();
+		// Find the first employee whose first name starts with "R".
+		// String empName = employees.stream().filter(e ->
+		// e.getName().startsWith("R")).findFirst().get().getName();
 		// System.out.println(empName);
-		//Find any employee whose last name contains "son".
-		// int empSize = employees.stream().filter(e->e.getName().contains("Ra")).collect(Collectors.toList()).size();
+		// Find any employee whose last name contains "son".
+		// int empSize =
+		// employees.stream().filter(e->e.getName().contains("Ra")).collect(Collectors.toList()).size();
 		// System.out.println("empSize: "+empSize);
-		//Find an employee by id.
-		// Employee employee = employees.stream().filter(e->e.getId()==7).findFirst().get(); 
-		// System.out.println(employee.getName()+" "+employee.getAge()+" "+employee.getId());
+		// Find an employee by id.
+		// Employee employee =
+		// employees.stream().filter(e->e.getId()==7).findFirst().get();
+		// System.out.println(employee.getName()+" "+employee.getAge()+"
+		// "+employee.getId());
 		// Find the first employee whose salary equals the average salary.
-		//  List<Employee> emp = employees.stream().filter(e->e.getSalary()>employees.stream().mapToDouble(Employee::getSalary).average().orElse(0)).collect(Collectors.toList());
+		// List<Employee> emp =
+		// employees.stream().filter(e->e.getSalary()>employees.stream().mapToDouble(Employee::getSalary).average().orElse(0)).collect(Collectors.toList());
 		// emp.forEach(e->System.out.println(e.getName()+" "+e.getSalary()));
 		// Find the employee with the longest first name.
-		// String empName = employees.stream().sorted(Comparator.comparingInt((Employee e)->e.getName().length()).reversed()).findFirst().get().getName();
+		// String empName = employees.stream().sorted(Comparator.comparingInt((Employee
+		// e)->e.getName().length()).reversed()).findFirst().get().getName();
 		// System.out.println("emp name: "+empName);
-		//Find the employee with the shortest last name.
-		// Employee emp = employees.stream().min(Comparator.comparingInt((Employee e)->e.getName().length())).get(); 
+		// Find the employee with the shortest last name.
+		// Employee emp = employees.stream().min(Comparator.comparingInt((Employee
+		// e)->e.getName().length())).get();
 		// System.out.println(emp.getName()+" and length is: "+emp.getName().length());
-		// int minSize = employees.stream().mapToInt(e->e.getName().length()).min().getAsInt();	
-		// employees.stream().filter(e->e.getName().length()==minSize).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+" "+e.getName().length()));
+		// int minSize =
+		// employees.stream().mapToInt(e->e.getName().length()).min().getAsInt();
+		// employees.stream().filter(e->e.getName().length()==minSize).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+"
+		// "+e.getName().length()));
 		// Find the first employee whose full name contains "John".
-		// Employee em = employees.stream().filter(e->e.getName().contains("John")).findFirst().orElse(null);
-		// System.out.println(em!=null ? em.getId()+" "+em.getName() : "no records found");
-		// System.out.println(emp!=null ? emp.getName()+" gets "+emp.getSalary():"no record found");
-		// Employee emp = employees.stream().filter(e->BigInteger.valueOf((int)e.getSalary()).isProbablePrime(50)).findFirst().get();
-		// System.out.println(emp!=null ? emp.getName()+" gets "+emp.getSalary():"no record found");
-		//Count employees with salary > 50,000.
-		// Long emp = employees.stream().filter(e->e.getSalary()>50000).collect(Collectors.counting()); 
-		// System.out.println("there are "+emp+" employees who has salary more than 50000.");
-		//Count employees with age < 30.
-		// Long empAge = employees.stream().filter(e->e.getAge()<30).collect(Collectors.counting());
-		// System.out.println(empAge);	
-		//Count employees with first name starting with "A".
+		// Employee em =
+		// employees.stream().filter(e->e.getName().contains("John")).findFirst().orElse(null);
+		// System.out.println(em!=null ? em.getId()+" "+em.getName() : "no records
+		// found");
+		// System.out.println(emp!=null ? emp.getName()+" gets "+emp.getSalary():"no
+		// record found");
+		// Employee emp =
+		// employees.stream().filter(e->BigInteger.valueOf((int)e.getSalary()).isProbablePrime(50)).findFirst().get();
+		// System.out.println(emp!=null ? emp.getName()+" gets "+emp.getSalary():"no
+		// record found");
+		// Count employees with salary > 50,000.
+		// Long emp =
+		// employees.stream().filter(e->e.getSalary()>50000).collect(Collectors.counting());
+		// System.out.println("there are "+emp+" employees who has salary more than
+		// 50000.");
+		// Count employees with age < 30.
+		// Long empAge =
+		// employees.stream().filter(e->e.getAge()<30).collect(Collectors.counting());
+		// System.out.println(empAge);
+		// Count employees with first name starting with "A".
 		// employees.stream().filter(e->e.getName().startsWith("B")).collect(Collectors.toList()).forEach(e->System.out.println(e.getName()));
-		//Sum of all employee salaries.
-		// System.out.println("sum of employee's salaries: "+employees.stream().mapToDouble(e->e.getSalary()).sum());
-		//Average salary of all employees.
-		//Double empAvgSal = employees.stream().mapToDouble(e->e.getSalary()).average().getAsDouble();
-		//System.out.println("double: "+empAvgSal);
-		//Max salary of employees under 40.
-		// System.out.println("max sal: "+employees.stream().filter(e->e.getAge()<40).mapToDouble(Employee::getSalary).max().getAsDouble());		
-		//Min salary of employees over 25.
-		//double maxBelow = employees.stream().filter(e->e.getAge()<25).mapToDouble(e->e.getSalary()).max().getAsDouble();
-		//System.out.println(maxBelow);
-		//Total number of employees above 35.
-		// System.out.println("doing: "+employees.stream().filter(e->e.getAge()>25).collect(Collectors.counting()));
-		//Average age of employees with salary > 50,000.
-		//double em = employees.stream().filter(e->e.getSalary()>50000).mapToInt(Employee::getAge).average().getAsDouble();
-		//System.out.println("em: "+em);
-		//Total salary of employees whose first name starts with "M".
-		// System.out.println("this is fine: "+employees.stream().filter(e->e.getName().startsWith("C")).mapToDouble(Employee::getSalary).sum());
-		//Check if all employees are older than 18.
-		// System.out.println("this is boolean: "+employees.stream().allMatch(e->e.getAge()>18));
-		//Check if any employee has salary > 100,000.
-		// System.out.println("employees has salary more than 10000: "+employees.stream().allMatch(e->e.getSalary()>100000));
-		//Check if no employee has age < 18.
-		// System.out.println("not less than 18: "+employees.stream().noneMatch(e->e.getAge()<18));
-		//Check if any employee has last name "Smith".
-		// System.out.println("Do we have an employee having name as Laura: "+employees.stream().anyMatch(e->e.getName().equals("Laura")));
-		//Check if no employee has negative salary.
-		// System.out.println(employees.stream().anyMatch(e->e.getSalary()<0) ? "Negative" : "Positive");
-		//Check if all employees have salary >= 30,000.
-		// System.out.println("Does everyone getting >=30k: "+employees.stream().allMatch(e->e.getSalary()>=30000));
-		//Check if any employee has full name containing "King".
+		// Sum of all employee salaries.
+		// System.out.println("sum of employee's salaries:
+		// "+employees.stream().mapToDouble(e->e.getSalary()).sum());
+		// Average salary of all employees.
+		// Double empAvgSal =
+		// employees.stream().mapToDouble(e->e.getSalary()).average().getAsDouble();
+		// System.out.println("double: "+empAvgSal);
+		// Max salary of employees under 40.
+		// System.out.println("max sal:
+		// "+employees.stream().filter(e->e.getAge()<40).mapToDouble(Employee::getSalary).max().getAsDouble());
+		// Min salary of employees over 25.
+		// double maxBelow =
+		// employees.stream().filter(e->e.getAge()<25).mapToDouble(e->e.getSalary()).max().getAsDouble();
+		// System.out.println(maxBelow);
+		// Total number of employees above 35.
+		// System.out.println("doing:
+		// "+employees.stream().filter(e->e.getAge()>25).collect(Collectors.counting()));
+		// Average age of employees with salary > 50,000.
+		// double em =
+		// employees.stream().filter(e->e.getSalary()>50000).mapToInt(Employee::getAge).average().getAsDouble();
+		// System.out.println("em: "+em);
+		// Total salary of employees whose first name starts with "M".
+		// System.out.println("this is fine:
+		// "+employees.stream().filter(e->e.getName().startsWith("C")).mapToDouble(Employee::getSalary).sum());
+		// Check if all employees are older than 18.
+		// System.out.println("this is boolean:
+		// "+employees.stream().allMatch(e->e.getAge()>18));
+		// Check if any employee has salary > 100,000.
+		// System.out.println("employees has salary more than 10000:
+		// "+employees.stream().allMatch(e->e.getSalary()>100000));
+		// Check if no employee has age < 18.
+		// System.out.println("not less than 18:
+		// "+employees.stream().noneMatch(e->e.getAge()<18));
+		// Check if any employee has last name "Smith".
+		// System.out.println("Do we have an employee having name as Laura:
+		// "+employees.stream().anyMatch(e->e.getName().equals("Laura")));
+		// Check if no employee has negative salary.
+		// System.out.println(employees.stream().anyMatch(e->e.getSalary()<0) ?
+		// "Negative" : "Positive");
+		// Check if all employees have salary >= 30,000.
+		// System.out.println("Does everyone getting >=30k:
+		// "+employees.stream().allMatch(e->e.getSalary()>=30000));
+		// Check if any employee has full name containing "King".
 		// System.out.println(employees.stream().anyMatch(e->e.getName().contains("nny")));
 		// employees.stream().map(Employee::getName).filter(e->e.contains("nny")).collect(Collectors.toList()).forEach(e->System.out.println(e));
-		//Check if all employees have age < 60.
-		// System.out.println(employees.stream().allMatch(e->e.getAge()<60 && e.getAge()>18));
-		//Check if no employee has first name starting with "Z".
-		// System.out.println(employees.stream().noneMatch(e->e.getName().toUpperCase().startsWith("z")) ? "no match found" : "match found");
-		//Group employees by department
-		//employees.stream().collect(Collectors.groupingBy(Employee::getDepartment)).forEach((dep, emp)->
-		//{
-		//System.out.println(dep+" has "+emp.size()+" employees.");
-		//int[] num = {1};
+		// Check if all employees have age < 60.
+		// System.out.println(employees.stream().allMatch(e->e.getAge()<60 &&
+		// e.getAge()>18));
+		// Check if no employee has first name starting with "Z".
+		// System.out.println(employees.stream().noneMatch(e->e.getName().toUpperCase().startsWith("z"))
+		// ? "no match found" : "match found");
+		// Group employees by department
+		// employees.stream().collect(Collectors.groupingBy(Employee::getDepartment)).forEach((dep,
+		// emp)->
+		// {
+		// System.out.println(dep+" has "+emp.size()+" employees.");
+		// int[] num = {1};
 		//// AtomicInteger num = new AtomicInteger(1);
-		//emp.forEach(e->
-		//{
-		//	System.out.println(num[0]+++" "+e.getName());
-		//});
-		//});
-		//Group employees by age.
-		//Map<Integer, Optional<Employee>> empGroup = employees.stream().collect(Collectors.groupingBy(Employee::getAge, Collectors.maxBy(Comparator.comparing(
-		//Employee::getSalary))));
+		// emp.forEach(e->
+		// {
+		// System.out.println(num[0]+++" "+e.getName());
+		// });
+		// });
+		// Group employees by age.
+		// Map<Integer, Optional<Employee>> empGroup =
+		// employees.stream().collect(Collectors.groupingBy(Employee::getAge,
+		// Collectors.maxBy(Comparator.comparing(
+		// Employee::getSalary))));
 		//
-		//empGroup.forEach((age, emp)->System.out.println("this is the age: "+age+" and this is the highest employee salary: "+ emp.get().getSalary()));
-		Integer [] intArr = {2,5,3,7,5,3,4,11};	
-		int[] ii = {2,5,34,21,6};
-		System.out.println("this is int: "+Arrays.stream(ii).max().getAsInt());
-		System.out.println("this is Integer: "+Arrays.stream(intArr).max(Integer::compareTo).get());
+		// empGroup.forEach((age, emp)->System.out.println("this is the age: "+age+" and
+		// this is the highest employee salary: "+ emp.get().getSalary()));
+		Integer[] intArr = { 2, 5, 3, 7, 5, 3, 4, 11 };
+		int[] ii = { 2, 5, 34, 21, 6 };
+		System.out.println("this is int: " + Arrays.stream(ii).max().getAsInt());
+		System.out.println("this is Integer: " + Arrays.stream(intArr).max(Integer::compareTo).get());
 		System.out.println(Arrays.stream(intArr).mapToInt(Integer::intValue).max().getAsInt());
-		//mapToInt takes any mapper function which converts Integer object to int
-		for(int i : ii)
-		{
-			System.out.println(i);	
-			}
+		// mapToInt takes any mapper function which converts Integer object to int
+		for (int i : ii) {
+			System.out.println(i);
+		}
 	}
 }
