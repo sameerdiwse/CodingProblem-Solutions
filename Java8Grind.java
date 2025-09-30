@@ -200,15 +200,15 @@ List<Employee> employees = Arrays.asList(
 		// System.out.println(employees.stream().noneMatch(e->e.getName().toUpperCase().startsWith("z")) ? "no match found" : "match found");
 		//Group employees by department
 		//employees.stream().collect(Collectors.groupingBy(Employee::getDepartment)).forEach((dep, emp)->
-				//{
-					//System.out.println(dep+" has "+emp.size()+" employees.");
-						//int[] num = {1};
-						//// AtomicInteger num = new AtomicInteger(1);
-						//emp.forEach(e->
-						//{
-						//	System.out.println(num[0]+++" "+e.getName());
-						//});
-				//});
+		//{
+		//System.out.println(dep+" has "+emp.size()+" employees.");
+		//int[] num = {1};
+		//// AtomicInteger num = new AtomicInteger(1);
+		//emp.forEach(e->
+		//{
+		//	System.out.println(num[0]+++" "+e.getName());
+		//});
+		//});
 		//Group employees by age.
 		//Map<Integer, Optional<Employee>> empGroup = employees.stream().collect(Collectors.groupingBy(Employee::getAge, Collectors.maxBy(Comparator.comparing(
 		//Employee::getSalary))));
@@ -218,7 +218,11 @@ List<Employee> employees = Arrays.asList(
 		int[] ii = {2,5,34,21,6};
 		System.out.println("this is int: "+Arrays.stream(ii).max().getAsInt());
 		System.out.println("this is Integer: "+Arrays.stream(intArr).max(Integer::compareTo).get());
-		System.out.println("this is maptoint: "+Arrays.stream(intArr).mapToInt(Integer::intValue).max().getAsInt()); 
+		System.out.println(Arrays.stream(intArr).mapToInt(Integer::intValue).max().getAsInt());
 		//mapToInt takes any mapper function which converts Integer object to int
-}
+		for(int i : ii)
+		{
+			System.out.println(i);	
+			}
+	}
 }
