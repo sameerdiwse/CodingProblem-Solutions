@@ -1,6 +1,10 @@
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 public class Java8Grind
 {
 	public static void main(String[] args) {
@@ -205,7 +209,16 @@ List<Employee> employees = Arrays.asList(
 						//	System.out.println(num[0]+++" "+e.getName());
 						//});
 				//});
-
-				
-	}
+		//Group employees by age.
+		//Map<Integer, Optional<Employee>> empGroup = employees.stream().collect(Collectors.groupingBy(Employee::getAge, Collectors.maxBy(Comparator.comparing(
+		//Employee::getSalary))));
+		//
+		//empGroup.forEach((age, emp)->System.out.println("this is the age: "+age+" and this is the highest employee salary: "+ emp.get().getSalary()));
+		Integer [] intArr = {2,5,3,7,5,3,4,11};	
+		int[] ii = {2,5,34,21,6};
+		System.out.println("this is int: "+Arrays.stream(ii).max().getAsInt());
+		System.out.println("this is Integer: "+Arrays.stream(intArr).max(Integer::compareTo).get());
+		System.out.println("this is maptoint: "+Arrays.stream(intArr).mapToInt(Integer::intValue).max().getAsInt()); 
+		//mapToInt takes any mapper function which converts Integer object to int
+}
 }
