@@ -137,7 +137,7 @@ public class Java8Grind {
 
 		// System.out.println(empAge);
 		// Map<String, List<Employee>> emp =
-		// employees.stream().collect(Collectors.groupingBy(Employee::getName));
+		// employees.stream().collect(Collectors. roupingBy(Employee::getName));
 		// emp.forEach((name, emps)->{
 		// System.out.println("employee name is: "+name);
 		// emps.forEach(e->System.out.println(name+"'s salary: "+e.getSalary()+" and
@@ -145,7 +145,7 @@ public class Java8Grind {
 		// });
 		// //Get a map of age → count of employees with that age.
 		// Map<Integer, List<Employee>> emp =
-		// employees.stream().collect(Collectors.groupingBy(Employee::getAge));
+		// employees.stream().collect(Collectors. roupingBy(Employee::getAge));
 		// emp.forEach((age, emps)->{
 		// System.out.println("we have "+emps.size()+" employees with age of "+age+"
 		// years.");
@@ -287,14 +287,62 @@ public class Java8Grind {
 		//
 		// empGroup.forEach((age, emp)->System.out.println("this is the age: "+age+" and
 		// this is the highest employee salary: "+ emp.get().getSalary()));
-		Integer[] intArr = { 2, 5, 3, 7, 5, 3, 4, 11 };
-		int[] ii = { 2, 5, 34, 21, 6 };
-		System.out.println("this is int: " + Arrays.stream(ii).max().getAsInt());
-		System.out.println("this is Integer: " + Arrays.stream(intArr).max(Integer::compareTo).get());
-		System.out.println(Arrays.stream(intArr).mapToInt(Integer::intValue).max().getAsInt());
-		// mapToInt takes any mapper function which converts Integer object to int
-		for (int i : ii) {
-			System.out.println(i);
-		}
+		// Group employees by salary range (<50k, 50k-100k, >100k).
+		// Map<String, List<Employee>> empMap =
+		// employees.stream().collect(Collectors.groupingBy(e -> {
+		// if (e.getSalary() < 50000)
+		// return "<50k";
+		// else if (e.getSalary() < 100000)
+		// return "50k-100k";
+		// else
+		// return "no value found";
+		// }));
+		//
+		// empMap.forEach((range, emps) -> {
+		// System.out.println("the range is: " + range);
+		// emps.forEach(e -> System.out
+		// .println(e.getName() + "=" + e.getDepartment() + "=" + e.getSalary()));
+		// });
+		// Count employees in each age group.
+		// Map<Integer, List<Employee>> empAge =
+		// employees.stream().collect(Collectors.groupingBy(Employee::getAge));
+		// empAge.forEach((age, emps)->{
+		// System.out.println("age is: "+age);
+		// emps.forEach(e->System.out.println("emp name: "+e.getName()+"emp salary:
+		// "+e.getSalary()+"emp dept: "+e.getDepartment()));
+		// });
+		// Count employees in each department.
+		// Map<String, List<Employee>> empMap = employees.stream()
+		// .collect(Collectors.groupingBy(Employee::getDepartment));
+		// empMap.forEach((dept, emps) -> {
+		// System.out.println(dept+" has "+emps.size()+" employees.");
+		// });
+		// Get max salary employee in each age group.
+		// Map<Integer, Double> empMap = employees.stream()
+		// .collect(Collectors.groupingBy(Employee::getAge,
+		// Collectors.collectingAndThen(
+		// Collectors.maxBy(Comparator.comparing(Employee::getSalary)),
+		// e->e.get().getSalary())));
+		// empMap.forEach((age, maxSalary)->System.out.println("age: "+age+" maxSalary:
+		// "+maxSalary));
+		// Get min salary employee in each department.
+		//employees.stream()
+		//		.collect(Collectors.groupingBy(Employee::getDepartment, Collectors.collectingAndThen(
+		//				Collectors.minBy(Comparator.comparing(Employee::getSalary)),
+		//				e -> e.get().getSalary()))).forEach((a, b)->{System.out.println("dept: "+a+" and min salary: "+b);});
+		//Get sum of salaries by department.
+		//employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingDouble(Employee::getSalary))).forEach((dept, salSum)->{
+		//	System.out.println("dept: "+dept+" salary sum: "+salSum);
+		//});
+		//Get average age by department.
+		//employees.stream().collect(Collectors.groupingBy(e->e.getDepartment(), Collectors.averagingDouble(e->e.getAge()))).forEach((e,f)->{
+		//	System.out.println("department: "+e+"avg age: "+f);
+		//});
+		//Group employees by first letter of first name.
+		employees.stream().collect(Collectors.groupingBy(e->e.getName().charAt(0))).forEach((firstLetter, Emp)->{
+			System.out.println("first letter: "+firstLetter);
+			Emp.forEach(i->System.out.println("name: "+i.getName()+"age: "+i.getAge()));
+		});
+
 	}
 }
