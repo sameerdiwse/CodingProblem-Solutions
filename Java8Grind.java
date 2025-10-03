@@ -368,5 +368,7 @@ public class Java8Grind {
 		//employees.stream().sorted(Comparator.comparing((Employee e) -> e.getSalary()).reversed()).limit(3)
 		//		.forEach(e -> System.out.println(
 		//				"emp name: " + e.getName() + "and their salary is: " + e.getSalary()));
+		//Double maxSalary = employees.stream().map(Employee::getSalary).findFirst().get();
+		//System.out.println(maxSalary);
 	}
 }
