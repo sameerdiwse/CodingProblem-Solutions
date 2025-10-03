@@ -1,3 +1,4 @@
+import java.text.CompactNumberFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -326,23 +327,46 @@ public class Java8Grind {
 		// empMap.forEach((age, maxSalary)->System.out.println("age: "+age+" maxSalary:
 		// "+maxSalary));
 		// Get min salary employee in each department.
-		//employees.stream()
-		//		.collect(Collectors.groupingBy(Employee::getDepartment, Collectors.collectingAndThen(
-		//				Collectors.minBy(Comparator.comparing(Employee::getSalary)),
-		//				e -> e.get().getSalary()))).forEach((a, b)->{System.out.println("dept: "+a+" and min salary: "+b);});
-		//Get sum of salaries by department.
-		//employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingDouble(Employee::getSalary))).forEach((dept, salSum)->{
-		//	System.out.println("dept: "+dept+" salary sum: "+salSum);
-		//});
-		//Get average age by department.
-		//employees.stream().collect(Collectors.groupingBy(e->e.getDepartment(), Collectors.averagingDouble(e->e.getAge()))).forEach((e,f)->{
-		//	System.out.println("department: "+e+"avg age: "+f);
-		//});
-		//Group employees by first letter of first name.
-		employees.stream().collect(Collectors.groupingBy(e->e.getName().charAt(0))).forEach((firstLetter, Emp)->{
-			System.out.println("first letter: "+firstLetter);
-			Emp.forEach(i->System.out.println("name: "+i.getName()+"age: "+i.getAge()));
-		});
-
+		// employees.stream()
+		// .collect(Collectors.groupingBy(Employee::getDepartment,
+		// Collectors.collectingAndThen(
+		// Collectors.minBy(Comparator.comparing(Employee::getSalary)),
+		// e -> e.get().getSalary()))).forEach((a, b)->{System.out.println("dept: "+a+"
+		// and min salary: "+b);});
+		// Get sum of salaries by department.
+		// employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,
+		// Collectors.summingDouble(Employee::getSalary))).forEach((dept, salSum)->{
+		// System.out.println("dept: "+dept+" salary sum: "+salSum);
+		// });
+		// Get average age by department.
+		// employees.stream().collect(Collectors.groupingBy(e->e.getDepartment(),
+		// Collectors.averagingDouble(e->e.getAge()))).forEach((e,f)->{
+		// System.out.println("department: "+e+"avg age: "+f);
+		// });
+		// });
+		// Group employees by first letter of first name.
+		// Map<String, List<Employee>> ee =
+		// employees.stream().collect(Collectors.groupingBy(e->String.valueOf(e.getName().charAt(0))));
+		// printing by iterating over the Map, where employees are lrouped by the first
+		// Character of their name.
+		// ee.forEach((a, b)->{
+		// System.out.println("Char is: ->->->->->-> "+a);
+		// b.forEach(e->{
+		// System.out.println("The name is: "+e.getName()+" and salary is:
+		// "+e.getSalary());
+		// });
+		// });
+		// Partition employees with salary > 50k and ≤ 50k.
+		// employees.stream().collect(Collectors.partitioningBy(e -> e.getSalary() >
+		// 50000)).forEach((e, f) -> {
+		// System.out.println("this is e: " + e);
+		// f.forEach(ee -> {
+		// System.out.println("name: " + ee.getName() + " salary: " + ee.getSalary());
+		// });
+		// });
+		// Get first 3 employees with highest salary and return full names.
+		employees.stream().sorted(Comparator.comparing((Employee e) -> e.getSalary()).reversed()).limit(3)
+				.forEach(e -> System.out.println(
+						"emp name: " + e.getName() + "and their salary is: " + e.getSalary()));
 	}
 }
