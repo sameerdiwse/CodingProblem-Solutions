@@ -365,11 +365,16 @@ public class Java8Grind {
 		// });
 		// });
 		// Get first 3 employees with highest salary and return full names.
-		//employees.stream().sorted(Comparator.comparing((Employee e) -> e.getSalary()).reversed()).limit(3)
-		//		.forEach(e -> System.out.println(
-		//				"emp name: " + e.getName() + "and their salary is: " + e.getSalary()));
-		Double maxSalary = employees.stream().map(Employee::getSalary).findFirst().get();
-		System.out.println(maxSalary);
+		// employees.stream().sorted(Comparator.comparing((Employee e) ->
+		// e.getSalary()).reversed()).limit(3)
+		// .forEach(e -> System.out.println(
+		// "emp name: " + e.getName() + "and their salary is: " + e.getSalary()));
+		// Double maxSalary =
+		// employees.stream().map(Employee::getSalary).findFirst().get();
+		// System.out.println(maxSalary);
+		// Get a list of all employee names.
+		employees.stream().map(Employee::getName).collect(Collectors.toList())
+				.forEach(e -> System.out.println("these are names: " + e));
 
 	}
 }
