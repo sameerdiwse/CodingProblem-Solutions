@@ -373,8 +373,10 @@ public class Java8Grind {
 		// employees.stream().map(Employee::getSalary).findFirst().get();
 		// System.out.println(maxSalary);
 		// Get a list of all employee names.
-		employees.stream().map(Employee::getName).collect(Collectors.toList())
-				.forEach(e -> System.out.println("these are names: " + e));
-
+		//employees.stream().map(Employee::getName).collect(Collectors.toList())
+		//		.forEach(e -> System.out.println("these are names: " + e));
+		//Check if no employee has age < 18.
+		boolean lessThan18 = employees.stream().noneMatch(e->e.getAge()<18);
+		System.out.println("less than 18: "+lessThan18);
 	}
 }
