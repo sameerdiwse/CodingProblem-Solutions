@@ -374,7 +374,7 @@ public class Java8Grind {
 		//boolean lessThan18 = employees.stream().noneMatch(e->e.getAge()<18);
 		//System.out.println("less than 18: "+lessThan18);
 		//Check if no employee has first name starting with "Z"
-		boolean emp = employees.stream().allMatch(e->e.getName().startsWith("Z"));
-		System.out.println("emp: "+emp);
+		//boolean emp = employees.stream().allMatch(e->e.getName().startsWith("Z"));
+		//System.out.println("emp: "+emp);
 	}
 }
