@@ -376,7 +376,7 @@ public class Java8Grind {
 		//employees.stream().map(Employee::getName).collect(Collectors.toList())
 		//		.forEach(e -> System.out.println("these are names: " + e));
 		//Check if no employee has age < 18.
-		//boolean lessThan18 = employees.stream().noneMatch(e->e.getAge()<18);
-		//System.out.println("less than 18: "+lessThan18);
+		boolean lessThan18 = employees.stream().noneMatch(e->e.getAge()<18);
+		System.out.println("less than 18: "+lessThan18);
 	}
 }
