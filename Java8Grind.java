@@ -1,6 +1,13 @@
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.EmptyStackException;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Java8Grind {
 	public static void main(String[] args) {
@@ -25,7 +32,6 @@ public class Java8Grind {
 				new Employee(18, "Cachel", "Marketing", 93000, 34, "Female", LocalDate.of(2019, 4, 25)),
 				new Employee(19, "Steve", "IT", 99000, 39, "Male", LocalDate.of(2020, 11, 12)),
 				new Employee(20, "Tina", "Finance", 56000, 27, "Female", LocalDate.of(2024, 2, 5)));
-
 		// Get a list of employees with salary greater than 50,000.
 		// List<Employee> empList =
 		// employees.stream().filter(e->e.getSalary()>78000).collect(Collectors.toList());
@@ -368,13 +374,39 @@ public class Java8Grind {
 		// employees.stream().map(Employee::getSalary).findFirst().get();
 		// System.out.println(maxSalary);
 		// Get a list of all employee names.
-		//employees.stream().map(Employee::getName).collect(Collectors.toList())
-		//		.forEach(e -> System.out.println("these are names: " + e));
-		//Check if no employee has age < 18.
-		//boolean lessThan18 = employees.stream().noneMatch(e->e.getAge()<18);
-		//System.out.println("less than 18: "+lessThan18);
-		//Check if no employee has first name starting with "Z"
-		//boolean emp = employees.stream().allMatch(e->e.getName().startsWith("Z"));
-		//System.out.println("emp: "+emp);
+		// employees.stream().map(Employee::getName).collect(Collectors.toList())
+		// .forEach(e -> System.out.println("these are names: " + e));
+		// Check if no employee has age < 18.
+		// boolean lessThan18 = employees.stream().noneMatch(e->e.getAge()<18);
+		// System.out.println("less than 18: "+lessThan18);
+		// Check if no employee has first name starting with "Z"
+		// boolean emp = employees.stream().allMatch(e->e.getName().startsWith("Z"));
+		// System.out.println("emp: "+emp);
+
+		// HashSet<String> hs = new HashSet<>();
+		// hs.add("Test01");
+		// System.out.println(hs);
+		//
+		int[] arr = { 2, 45, 2, 56, 43, 22 };
+		Integer aa = Arrays.stream(arr).boxed().sorted(Comparator.comparing(Integer::valueOf)).skip(arr.length-2).findFirst().get();
+		System.out.println("second largest: "+aa);
+		Integer bb = Arrays.stream(arr).boxed().distinct().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+		System.out.println("with another function: "+bb);
+
+		// Arrays.stream(arr).max().getAsInt();
+		//
+		// Integer[] intArr = {2,45,2,56,43,22};
+		//
+		// Arrays.stream(intArr).max(Integer::compareTo).get();
+
+		//Map<String, Optional<Employee>> eee = employees.stream().collect(Collectors.groupingBy(
+		//		Employee::getDepartment, Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
+		//
+		//eee.forEach((a, b) -> {
+		//	System.out.println("this is dept: "+a+" and the emp name is: "+b.get().getName()+" and salary is: "+b.get().getSalary());
+			
+		// });
+
+
 	}
 }
