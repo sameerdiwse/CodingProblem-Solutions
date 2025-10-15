@@ -388,23 +388,27 @@ public class Java8Grind {
 		// System.out.println(hs);
 		//
 		int[] arr = { 2, 45, 2, 56, 43, 22 };
-		Integer aa = Arrays.stream(arr).boxed().sorted(Comparator.comparing(Integer::valueOf)).skip(arr.length-2).findFirst().get();
-		System.out.println("second largest: "+aa);
-		Integer bb = Arrays.stream(arr).boxed().distinct().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
-		System.out.println("with another function: "+bb);
+		
+		System.out.println("max number: "+Arrays.stream(arr).sorted().skip(arr.length-2).findFirst().getAsInt());
+		System.out.println("with boxed: "+Arrays.stream(arr).boxed().sorted(Comparator.reverseOrder()).skip(1).findFirst().get());
 
+		double maxSalary = employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary();
+		System.out.println("max salaried employee: "+employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary());
 		// Arrays.stream(arr).max().getAsInt();
 		//
 		// Integer[] intArr = {2,45,2,56,43,22};
 		//
 		// Arrays.stream(intArr).max(Integer::compareTo).get();
 
-		//Map<String, Optional<Employee>> eee = employees.stream().collect(Collectors.groupingBy(
-		//		Employee::getDepartment, Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
+		// Map<String, Optional<Employee>> eee =
+		// employees.stream().collect(Collectors.groupingBy(
+		// Employee::getDepartment,
+		// Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
 		//
-		//eee.forEach((a, b) -> {
-		//	System.out.println("this is dept: "+a+" and the emp name is: "+b.get().getName()+" and salary is: "+b.get().getSalary());
-			
+		// eee.forEach((a, b) -> {
+		// System.out.println("this is dept: "+a+" and the emp name is:
+		// "+b.get().getName()+" and salary is: "+b.get().getSalary());
+
 		// });
 
 
