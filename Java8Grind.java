@@ -388,12 +388,14 @@ public class Java8Grind {
 		// System.out.println(hs);
 		//
 		int[] arr = { 2, 45, 2, 56, 43, 22 };
-		
+		Integer secondLargest = Arrays.stream(arr).boxed().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+		System.out.println("this is the second largest: "+secondLargest);
 		System.out.println("max number: "+Arrays.stream(arr).sorted().skip(arr.length-2).findFirst().getAsInt());
 		System.out.println("with boxed: "+Arrays.stream(arr).boxed().sorted(Comparator.reverseOrder()).skip(1).findFirst().get());
 
 		double maxSalary = employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary();
 		System.out.println("max salaried employee: "+employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary());
+
 
 		// });
 
