@@ -394,20 +394,6 @@ public class Java8Grind {
 
 		double maxSalary = employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary();
 		System.out.println("max salaried employee: "+employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary());
-		// Arrays.stream(arr).max().getAsInt();
-		//
-		// Integer[] intArr = {2,45,2,56,43,22};
-		//
-		// Arrays.stream(intArr).max(Integer::compareTo).get();
-
-		// Map<String, Optional<Employee>> eee =
-		// employees.stream().collect(Collectors.groupingBy(
-		// Employee::getDepartment,
-		// Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
-		//
-		// eee.forEach((a, b) -> {
-		// System.out.println("this is dept: "+a+" and the emp name is:
-		// "+b.get().getName()+" and salary is: "+b.get().getSalary());
 
 		// });
 
