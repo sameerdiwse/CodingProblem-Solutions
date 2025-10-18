@@ -396,9 +396,12 @@ public class Java8Grind {
 		double maxSalary = employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary();
 		System.out.println("max salaried employee: "+employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary());
 
-		Integer[] wrapInt = {2,5,43,22,10,8,23, 44};
-		int in = Arrays.stream(wrapInt).max(Integer::compareTo).get();
-		System.out.println("max from wrapper stream: "+in);
+		Integer[] wrapInt = {2,5,43,22,10,8,23,44,99,100};
+		//int in = Arrays.stream(wrapInt).max(Integer::compareTo).get();
+		//System.out.println("max from wrapper stream: "+in);
+		//Look for second highest number
+		Integer ii = Arrays.stream(wrapInt).sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+		System.out.println("second from wrapper stream: "+ii);
 		// });
 
 
