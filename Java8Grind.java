@@ -400,11 +400,11 @@ public class Java8Grind {
 		//int in = Arrays.stream(wrapInt).max(Integer::compareTo).get();
 		//System.out.println("max from wrapper stream: "+in);
 		//Look for second highest number
-		//Integer ii = Arrays.stream(wrapInt).sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
-		//System.out.println("second from wrapper stream: "+ii);
+		Integer ii = Arrays.stream(wrapInt).sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+		System.out.println("second from wrapper stream: "+ii);
 
 		Map<String, Optional<Employee>> empMap = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
-		System.out.println("this is the map size: "+ empMap.size());
+		System.out.println("this is the map size: "+empMap.size());
 		empMap.forEach((dept, emp)->{
 		System.out.println("this is the department: "+dept+" and this is the salary he/she is getting: "+emp.get().getSalary());
 		});
