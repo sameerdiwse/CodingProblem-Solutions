@@ -29,7 +29,7 @@ List<Employee> employees = Arrays.asList(
 			
 			//Get names of all employees in a list.
 			List<String> empNames = employees.stream().map(Employee::getName).collect(Collectors.toList());
-			//empNames.forEach(e->System.out.println("these are all names: "+e));
+			empNames.forEach(e->System.out.println("these are all names: "+e));
 			
 			//Print distinct departments.
 			//List<String> distictDepts = employees.stream().map(Employee::getDepartment).distinct().collect(Collectors.toList());
