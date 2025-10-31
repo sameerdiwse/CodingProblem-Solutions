@@ -407,6 +407,7 @@ public class Java8Grind {
 		System.out.println("this is the map size: "+empMap.size());
 		empMap.forEach((dept, emp)->{
 		System.out.println("this is the department: "+dept+" and this is the salary he/she is getting: "+emp.get().getSalary());
+			
 		});
 		// });
 
