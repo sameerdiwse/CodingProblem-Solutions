@@ -414,9 +414,6 @@ public class Java8Grind {
 		Employee emp = employees.stream().max(Comparator.comparing(Employee::getSalary)).get();
 		System.out.println("this is max salary emp: "+ emp.getName() + "and works in: "+emp.getDepartment());
 
-		//Finding second last employee
-		Employee empSecondLast = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).findFirst().get();
-		System.out.println("this is second last: "+empSecondLast.getName());
 
 	}
 }
