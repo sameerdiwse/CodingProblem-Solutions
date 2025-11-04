@@ -411,8 +411,8 @@ public class Java8Grind {
 		});
 		// });
 		//Finding max salary employee
-		Employee emp = employees.stream().max(Comparator.comparing(Employee::getSalary)).get();
-		System.out.println("this is max salary emp: "+ emp.getName() + "and works in: "+emp.getDepartment());
+		//Employee emp = employees.stream().max(Comparator.comparing(Employee::getSalary)).get();
+		//System.out.println("this is max salary emp: "+ emp.getName() + "and works in: "+emp.getDepartment());
 
 
 	}
