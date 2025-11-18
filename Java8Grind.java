@@ -347,7 +347,7 @@ public class Java8Grind {
 		// });
 		// Group employees by first letter of first name.
 		// Map<String, List<Employee>> ee =
-		// employees.stream().collect(Collectors.groupingBy(e->String.valueOf(e.getName().charAt(0))));
+		// employees.stream().collect(Collectors.rroupingBy(e->String.valueOf(e.getName().charAt(0))));
 		// printing by iterating over the Map, where employees are lrouped by the first
 		// Character of their name.
 		// ee.forEach((a, b)->{
@@ -386,34 +386,31 @@ public class Java8Grind {
 		// HashSet<String> hs = new HashSet<>();
 		// hs.add("Test01");
 		// System.out.println(hs);
-		//
+		//For fetching second highest salary employee
+		double ee = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).skip(1).findFirst().get().getSalary();
 		int[] arr = { 2, 45, 2, 56, 43, 22 };
 		Integer secondLargest = Arrays.stream(arr).boxed().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
-		System.out.println("this is the second largest: "+secondLargest);
-		System.out.println("max number: "+Arrays.stream(arr).sorted().skip(arr.length-2).findFirst().getAsInt());
-		System.out.println("with boxed: "+Arrays.stream(arr).boxed().sorted(Comparator.reverseOrder()).skip(1).findFirst().get());
-
+		// Integer eeee = Arrays.stream(arr).boxed().max(Integer::compare).get(); 
+		// System.out.println("max number:"+eeee);
+		// Integer intMaxNum = Arrays.stream(arr).boxed().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+		// System.out.println("second largest number: "+intMaxNum);
 		double maxSalary = employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary();
-		System.out.println("max salaried employee: "+employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary());
-
+		System.out.println("this is max salary: "+maxSalary);
+		// double maxSalary = employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary();
+		// System.out.println("max salaried employee: "+employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary());
+		Employee emp = employees.stream().max(Comparator.comparing(Employee::getSalary)).get();
 		Integer[] wrapInt = {2,5,43,22,10,8,23,44,99,100};
 		//int in = Arrays.stream(wrapInt).max(Integer::compareTo).get();
 		//System.out.println("max from wrapper stream: "+in);
 		//Look for second highest number
 		Integer ii = Arrays.stream(wrapInt).sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
-		System.out.println("second from wrapper stream: "+ii);
+		// System.out.println("second from wrapper stream: "+ii);
 
 		Map<String, Optional<Employee>> empMap = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
-		System.out.println("this is the map size: "+empMap.size());
-		empMap.forEach((dept, emp)->{
-		System.out.println("this is the department: "+dept+" and this is the salary he/she is getting: "+emp.get().getSalary());
-			
-		});
-		// });
-		//Finding max salary employee
-		//Employee emp = employees.stream().max(Comparator.comparing(Employee::getSalary)).get();
-		//System.out.println("this is max salary emp: "+ emp.getName() + "and works in: "+emp.getDepartment());
 
+		int[] intArr = {1,4,2,22,54,21};
+		int maxInt = Arrays.stream(intArr).max().getAsInt();
+		System.out.println("this is max int: "+maxInt);
 
 	}
 }
