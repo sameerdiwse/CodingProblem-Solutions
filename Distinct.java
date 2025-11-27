@@ -14,6 +14,6 @@ class Distinct
     // how many evens are there till 100
     long sums = IntStream.range(0,101).filter(x->x%2==0).count();
     System.out.println("count of sums: "+sums);
-	 System.out.println(l);
+	 //System.out.println(l);
    }
 }
