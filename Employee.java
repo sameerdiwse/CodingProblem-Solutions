@@ -10,7 +10,7 @@ class Employee {
 	private String gender;
 	private LocalDate joiningDate;
 
-	/*public Employee(int id, String name, String department,
+	public Employee(int id, String name, String department,
 			double salary, int age, String gender, LocalDate joiningDate) {
 		this.id = id;
 		this.name = name;
@@ -19,7 +19,7 @@ class Employee {
 		this.age = age;
 		this.gender = gender;
 		this.joiningDate = joiningDate;
-	}*/
+	}
 
 	// Getters
 	public int getId() {
