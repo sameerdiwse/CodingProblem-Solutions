@@ -408,9 +408,5 @@ public class Java8Grind {
 
 		Map<String, Optional<Employee>> empMap = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
 
-		int[] intArr = {1,4,2,22,54,21};
-		int maxInt = Arrays.stream(intArr).max().getAsInt();
-		System.out.println("this is max int: "+maxInt);
-
 	}
 }
