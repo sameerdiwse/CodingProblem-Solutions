@@ -7,9 +7,9 @@ class A
 
 class B extends A
 {
-	void show(){	
-	System.out.println("show B");
-	}
+	//void show(){	
+	//System.out.println("show B");
+	//}
 
 }
 
