@@ -29,7 +29,17 @@ class Dynamic_Poly
 		//different objects.
 		System.out.println("checking the content: "+(s1.equals(s2)));
 
+		//find out the longest word
+		String str = "I am a Java Programmer, I like to code.";
 
-		
+		String[] strArr = str.split(" ");
+		String maxLen = "";
+		for (String string : strArr) {
+			if(string.length()>maxLen.length())
+		{
+				maxLen = string;
+			}
+		}
+		System.out.println("this is the max length word: "+maxLen);	
 	}
 }
