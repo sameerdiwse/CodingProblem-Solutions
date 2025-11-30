@@ -21,6 +21,15 @@ class Dynamic_Poly
 		A a = new B();
 		a.show();//Even if B doesn't have show function, A's show() will be picked up here.
 
+		//String immutability practice
+		String s1 = new String("Java");
+		String s2 = new String("Java");
+		System.out.println("checking reference equality: "+(s1==s2));
+		//Above code returns false, because two new objects are created and both object references are pointing at two 
+		//different objects.
+		System.out.println("checking the content: "+(s1.equals(s2)));
+
+
 		
 	}
 }
