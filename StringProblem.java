@@ -13,8 +13,12 @@ public static void main(String[] args) {
 			{
 				hm.put(str.charAt(i), hm.get(str.charAt(i))+1);	
 			}
+			else
+		{
 			hm.put(str.charAt(i), 1);	
 		}
+		}
+		System.out.println("this is hm: "+hm);
 
 }
 }
