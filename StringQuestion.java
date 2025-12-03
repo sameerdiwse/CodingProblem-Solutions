@@ -6,9 +6,9 @@ public class StringQuestion
 		String string = "I Love Java";
 		String[] str = string.split(" ");
 		String revString = "";	
-		for(int i = str.length; i>0; i--)
+		for(int i = str.length-1; i>=0; i--)
 		{
-			revString+=str[i];
+			revString+=str[i]+" ";
 		}
 		System.out.println("this is reversed string: "+revString);
 	}
