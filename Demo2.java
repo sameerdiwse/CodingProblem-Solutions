@@ -15,6 +15,6 @@ class Demo2
 		
 		long l = list.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
 		
-		System.out.println(l);
+		//System.out.println(l);
 	}
 }
