@@ -23,7 +23,9 @@ public static void main(String[] args) {
 
 		String name = "Sameer"; 
 
-		IntStream.range(0, name.length()).filter(i->i%2==0).mapToObj(i->name.charAt(i)).forEach(i->System.out.println(i));
+		StringBuffer sb = new StringBuffer();
+		IntStream.range(0, name.length()).filter(i->i%2!=0).mapToObj(i->name.charAt(i)).forEach(i->sb.append(i));
+		System.out.println(sb);
 
 }
 }
