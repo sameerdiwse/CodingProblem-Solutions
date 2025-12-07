@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class StringProblem
@@ -21,13 +22,16 @@ public static void main(String[] args) {
 		//}
 		//System.out.println("this is hm: "+hm);
 
-		// String name = "Sameer"; 
+		String name = "Sameer"; 
 
 		//StringBuffer sb = new StringBuffer();
 		//IntStream.range(0, name.length()).filter(i->i%2!=0).mapToObj(i->name.charAt(i)).forEach(i->sb.append(i));
 		//System.out.println(sb);
 
 		//Reverse the string using IntStream
+		String updatedName = IntStream.range(0, name.length()).mapToObj(i->name.charAt(name.length()-1-i)).map(String::valueOf).
+		collect(Collectors.joining());
+		System.out.println("this is reversed name: "+updatedName);
 
 }
 }
