@@ -21,11 +21,13 @@ public static void main(String[] args) {
 		//}
 		//System.out.println("this is hm: "+hm);
 
-		String name = "Sameer"; 
+		// String name = "Sameer"; 
 
-		StringBuffer sb = new StringBuffer();
-		IntStream.range(0, name.length()).filter(i->i%2!=0).mapToObj(i->name.charAt(i)).forEach(i->sb.append(i));
-		System.out.println(sb);
+		//StringBuffer sb = new StringBuffer();
+		//IntStream.range(0, name.length()).filter(i->i%2!=0).mapToObj(i->name.charAt(i)).forEach(i->sb.append(i));
+		//System.out.println(sb);
+
+		//Reverse the string using IntStream
 
 }
 }
