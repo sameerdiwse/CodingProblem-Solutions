@@ -15,6 +15,6 @@ int[] i = {1,4,23,103,54,3,21, 521,90};
 			
 			int[] a = Arrays.stream(i).boxed().sorted(Comparator.reverseOrder()).mapToInt(Integer::intValue).toArray();
 			System.out.println(a[0]);
-			//a[0]; -> is not valid; it's just a standalone expression and does nothing.
+			a[0]; -> is not valid; it's just a standalone expression and does nothing.
   }
 }
