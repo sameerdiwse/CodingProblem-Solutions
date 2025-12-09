@@ -22,16 +22,19 @@ public static void main(String[] args) {
 		//}
 		//System.out.println("this is hm: "+hm);
 
-		String name = "Sameer"; 
+		// String name = "Sameer"; 
 
 		//StringBuffer sb = new StringBuffer();
 		//IntStream.range(0, name.length()).filter(i->i%2!=0).mapToObj(i->name.charAt(i)).forEach(i->sb.append(i));
 		//System.out.println(sb);
 
 		//Reverse the string using IntStream
-		String updatedName = IntStream.range(0, name.length()).mapToObj(i->name.charAt(name.length()-1-i)).map(String::valueOf).
-		collect(Collectors.joining());
-		System.out.println("this is reversed name: "+updatedName);
+		//String updatedName = IntStream.range(0, name.length()).mapToObj(i->name.charAt(name.length()-1-i)).map(String::valueOf).
+		//collect(Collectors.joining());
+		//System.out.println("this is reversed name: "+updatedName);
+		String str = "What if everyone is asleep on earth!!";
+		str.chars().mapToObj(i -> (char) i).collect(Collectors.groupingBy(e->e, Collectors.counting()));
+
 
 }
 }
