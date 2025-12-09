@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -33,7 +34,11 @@ public static void main(String[] args) {
 		//collect(Collectors.joining());
 		//System.out.println("this is reversed name: "+updatedName);
 		String str = "What if everyone is asleep on earth!!";
-		str.chars().mapToObj(i -> (char) i).collect(Collectors.groupingBy(e->e, Collectors.counting()));
+		Map<Object, Long> charsMap = str.chars().mapToObj(i -> (char) i).collect(Collectors.groupingBy(e->e, Collectors.counting()));
+		charsMap.forEach((a, b)->
+		{
+				System.out.println(a+"->"+b);
+		});
 
 
 }
