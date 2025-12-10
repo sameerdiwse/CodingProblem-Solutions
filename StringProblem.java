@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -42,6 +43,8 @@ public static void main(String[] args) {
 
 		int[] arr = {1,4,5,3,7,8};
 		//Find max number from array
+		int maxInt = Arrays.stream(arr).max().getAsInt();
+		System.out.println("this is max number: "+maxInt);
 
 
 }
