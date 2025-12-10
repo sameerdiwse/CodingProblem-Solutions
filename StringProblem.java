@@ -33,12 +33,15 @@ public static void main(String[] args) {
 		//String updatedName = IntStream.range(0, name.length()).mapToObj(i->name.charAt(name.length()-1-i)).map(String::valueOf).
 		//collect(Collectors.joining());
 		//System.out.println("this is reversed name: "+updatedName);
-		String str = "What if everyone is asleep on earth!!";
-		Map<Object, Long> charsMap = str.chars().filter(i->i!=' ').mapToObj(i -> (char) i).collect(Collectors.groupingBy(e->e, Collectors.counting()));
-		charsMap.forEach((a, b)->
-		{
-				System.out.println(a+"->"+b);
-		});
+		//String str = "What if everyone is asleep on earth!!";
+		//Map<Object, Long> charsMap = str.chars().filter(i->i!=' ').mapToObj(i -> (char) i).collect(Collectors.groupingBy(e->e, Collectors.counting()));
+		//charsMap.forEach((a, b)->
+		//{
+		//		System.out.println(a+"->"+b);
+		//});
+
+		int[] arr = {1,4,5,3,7,8};
+		//Find max number from array
 
 
 }
