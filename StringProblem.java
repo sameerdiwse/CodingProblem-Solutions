@@ -46,9 +46,14 @@ public static void main(String[] args) {
 		// int maxInt = Arrays.stream(arr).max().get();
 		// System.out.println("this is max number: "+maxInt);
 		// int[] arr = {1, 3, 5, 2, 21, 54};
-		List<String> names = Arrays.asList("Sam", "Rita", "Ron", "Steve", "Raghav");
-		long count = names.stream().filter(w->w.startsWith("R")).count();
-		System.out.println(count+" these many words starts with R");
+		//List<String> names = Arrays.asList("Sam", "Rita", "Ron", "Steve", "Raghav");
+		//long count = names.stream().filter(w->w.startsWith("R")).count();
+		//System.out.println(count+" these many words starts with R");
+
+		//Convert a list of strings to uppercase and remove empty strings
+		List<String> items = Arrays.asList("hello", "", "world", "java", "");
+		List<String> modifiedStrings = items.stream().filter(i->!i.isEmpty()).map(String::toUpperCase).collect(Collectors.toList());
+		System.out.println("this is modified: "+modifiedStrings);
 
 
 }
