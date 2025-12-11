@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.List;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -41,10 +42,13 @@ public static void main(String[] args) {
 		//		System.out.println(a+"->"+b);
 		//});
 
-		int[] arr = {1,4,5,3,7,8};
 		//Find max number from array
-		int maxInt = Arrays.stream(arr).max().getAsInt();
-		System.out.println("this is max number: "+maxInt);
+		// int maxInt = Arrays.stream(arr).max().get();
+		// System.out.println("this is max number: "+maxInt);
+		// int[] arr = {1, 3, 5, 2, 21, 54};
+		List<String> names = Arrays.asList("Sam", "Rita", "Ron", "Steve", "Raghav");
+		long count = names.stream().filter(w->w.startsWith("R")).count();
+		System.out.println(count+" these many words starts with R");
 
 
 }
