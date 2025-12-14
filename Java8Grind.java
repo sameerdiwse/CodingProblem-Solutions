@@ -387,7 +387,7 @@ public class Java8Grind {
 		// hs.add("Test01");
 		// System.out.println(hs);
 		//For fetching second highest salary employee
-		Employee ee = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).skip(1).findFirst().get().getSalary();
+		// Employee ee = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).skip(1).findFirst().get().getSalary();
 		int[] arr = { 2, 45, 2, 56, 43, 22 };
 		Integer secondLargest = Arrays.stream(arr).boxed().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
 		// Integer eeee = Arrays.stream(arr).boxed().max(Integer::compare).get(); 
@@ -417,7 +417,7 @@ public class Java8Grind {
 		//Find the second highest paid employee
 		Employee eee = employees.stream().max(Comparator.comparing(Employee::getSalary)).get();
 		System.out.println("max salary: "+eee.getSalary());
-		Employee e = employees.stream().sorted(Comparator.comparing(Employee::getSalary)).findFirst().get();
+		Employee e = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).skip(2).findFirst().get();
 		System.out.println("this is the second highest salary: "+e.getSalary());
 
 
