@@ -417,8 +417,13 @@ public class Java8Grind {
 		//Find the second highest paid employee
 		Employee eee = employees.stream().max(Comparator.comparing(Employee::getSalary)).get();
 		System.out.println("max salary: "+eee.getSalary());
-		Employee e = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).skip(2).findFirst().get();
-		System.out.println("this is the second highest salary: "+e.getSalary());
+		//Employee e = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).skip(2).findFirst().get();
+		// System.out.println("this is the second highest salary: "+e.getSalary());
+		//If two employees are being paid same (highest) then above approach could be wrong. To mitigate the issue let's use below approach.
+
+		Double secondHighestSalary = employees.stream().map(Employee::getSalary).distinct().max(Comparator.reverseOrder()).get();
+		Employee secondHighestPaidEmp = employees.stream().filter(e->e.getSalary()==secondHighestSalary).findFirst().get();
+		System.out.println(secondHighestPaidEmp.getName()+" gets paid "+secondHighestSalary+" which is second highest");
 
 
 	}
