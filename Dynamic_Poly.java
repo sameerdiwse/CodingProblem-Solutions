@@ -20,7 +20,7 @@ class Dynamic_Poly
 		////Below is the corrected code
 		A a = new B();
 		a.show();//Even if B doesn't have show function, A's show() will be picked up here.
-
+System.out.println("checking");
 		//String immutability practice
 		String s1 = new String("Java");
 		String s2 = new String("Java");
