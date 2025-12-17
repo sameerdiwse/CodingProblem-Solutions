@@ -6,7 +6,7 @@ class DividedBy
     {
 	  if(i%7==0)
 	  {
-	    System.out.println(i);
+	    //System.out.println(i);
 	  }
 	}	
   }
