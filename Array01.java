@@ -33,7 +33,7 @@ public class Array01 {
 		for (int j = chr.length - 1; j >= 0; j--) {
 			revString = revString.concat(String.valueOf(chr[j]));
 		}
-		// System.out.println(Integer.valueOf(revString.getClass().getSimpleName()));
+		 System.out.println(Integer.valueOf(revString.getClass().getSimpleName()));
 		System.out.println(Integer.valueOf(revString).getClass().getSimpleName());
 	}
 
