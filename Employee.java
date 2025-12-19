@@ -18,7 +18,7 @@ class Employee {
 		this.salary = salary;
 		this.age = age;
 		this.gender = gender;
-		this.joiningDate = joiningDate;
+		//this.joiningDate = joiningDate;
 	}
 
 	// Getters
