@@ -24,7 +24,7 @@ public class Array01 {
 				// + arr[i]);
 
 			} else {
-				//map.put(complement, i);
+				map.put(complement, i);
 			}
 		});
 		int x = 213;
