@@ -7,14 +7,14 @@ public class Array01 {
 	public static void main(String[] args) {
 		int[] arr = { 1, 2, 8, 6, 7 };
 		int target = 9;
-		// for (int i = 0; i < arr.length - 1; i++) {
-		// for (int j = i + 1; j < arr.length; j++) {
-		// if (arr[i] + arr[j] == target) {
-		// System.out.println("two elements are: " + arr[i] + " and " + arr[j]);
-		//
-		// }
-		// }
-		// }
+		 for (int i = 0; i < arr.length - 1; i++) {
+		 for (int j = i + 1; j < arr.length; j++) {
+		 if (arr[i] + arr[j] == target) {
+		 System.out.println("two elements are: " + arr[i] + " and " + arr[j]);
+		
+		}
+		 }
+		}
 //complement is nothing but to get the required num we desire, we'll search for it during traversing the array.
 		Map<Integer, Integer> map = new HashMap<>();
 		IntStream.range(0, arr.length).forEach(i -> {
