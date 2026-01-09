@@ -15,7 +15,7 @@ public class ArraysFun {
 		};
 
 		
-	//Arrays.stream(intArr).flatMapToInt(Arrays::stream).forEach(System.out::println);
+	Arrays.stream(intArr).flatMapToInt(Arrays::stream).forEach(System.out::println);
 	}
 
 }
