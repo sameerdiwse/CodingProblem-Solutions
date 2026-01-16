@@ -20,8 +20,8 @@ public class Array01 {
 		IntStream.range(0, arr.length).forEach(i -> {
 			int complement = target - arr[i];
 			if (map.containsKey(arr[i])) {
-				// System.out.println("these are the values: " + arr[map.get(arr[i])] + " and "
-				// + arr[i]);
+				System.out.println("these are the values: " + arr[map.get(arr[i])] + " and "
+				 + arr[i]);
 
 			} else {
 				map.put(complement, i);
