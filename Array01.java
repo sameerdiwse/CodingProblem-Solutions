@@ -34,7 +34,7 @@ public class Array01 {
 			revString = revString.concat(String.valueOf(chr[j]));
 		}
 		 System.out.println(Integer.valueOf(revString.getClass().getSimpleName()));
-		System.out.println(Integer.valueOf(revString).getClass().getSimpleName());
+		//System.out.println(Integer.valueOf(revString).getClass().getSimpleName());
 	}
 
 }
