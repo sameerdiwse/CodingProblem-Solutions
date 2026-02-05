@@ -5,15 +5,13 @@ public class ArraysFun {
 
         int[][] a = {{1,2,3},{4,5,6},{7,8,9}};
 
-        var flat = Arrays.stream(a).flatMapToInt(Arrays::stream);
+        int[] flat = Arrays.stream(a).flatMapToInt(Arrays::stream).toArray();
 
         System.out.println(Arrays.deepToString(a));
-        System.out.println("Sum=" + flat.sum());
-
-        flat = Arrays.stream(a).flatMapToInt(Arrays::stream);
-        System.out.println("Avg=" + flat.average().orElse(0));
-
-        System.out.println("Max=" +
-            Arrays.stream(a).flatMapToInt(Arrays::stream).max().orElse(0));
+        System.out.println("Flat=" + Arrays.toString(flat));
+        System.out.println("Sum=" + Arrays.stream(flat).sum());
+        System.out.println("Avg=" + Arrays.stream(flat).average().orElse(0));
+        System.out.println("Max=" + Arrays.stream(flat).max().orElse(0));
+        System.out.println("Even=" + Arrays.stream(flat).filter(n -> n % 2 == 0).count());
     }
 }
