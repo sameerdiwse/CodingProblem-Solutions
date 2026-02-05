@@ -1,21 +1,19 @@
 import java.util.Arrays;
-import java.util.stream.Stream;
 
-import java.util.*;
 public class ArraysFun {
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		//Print all elements of a 2D array.
-		int [][] intArr = {
-		{1,2,3},
-		{4,5,6},
-		{7,8,9}
-		};
+    public static void main(String[] args) {
 
-		System.out.println("this is the array: "+intArr);
-	Arrays.stream(intArr).flatMapToInt(Arrays::stream).forEach(System.out::println);
-	}
+        int[][] intArr = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
 
+        System.out.println("2D Array Elements:");
+
+        var flatStream = Arrays.stream(intArr)
+                               .flatMapToInt(Arrays::stream);
+
+        flatStream.forEach(n -> System.out.print(n + " "));
+    }
 }
