@@ -4,38 +4,18 @@ public class ArraysFun {
 
     public static void main(String[] args) {
 
-        int[][] intArr = {
+        int[][] arr = {
             {1, 2, 3},
             {4, 5, 6},
             {7, 8, 9}
         };
 
-        print2DArray(intArr);
-        printFlattenedArray(intArr);
-        printArraySum(intArr);
-    }
+        Arrays.stream(arr).forEach(r -> System.out.println(Arrays.toString(r)));
 
-    // Prints row by row
-    private static void print2DArray(int[][] arr) {
-        System.out.println("Original 2D Array:");
-        Arrays.stream(arr)
-              .forEach(row -> System.out.println(Arrays.toString(row)));
-    }
+        int sum = Arrays.stream(arr).flatMapToInt(Arrays::stream).sum();
+        int max = Arrays.stream(arr).flatMapToInt(Arrays::stream).max().orElse(0);
 
-    // Flattens and prints
-    private static void printFlattenedArray(int[][] arr) {
-        System.out.print("\nFlattened Elements: ");
-        Arrays.stream(arr)
-              .flatMapToInt(Arrays::stream)
-              .forEach(n -> System.out.print(n + " "));
-        System.out.println();
-    }
-
-    // Extra logic — calculates sum
-    private static void printArraySum(int[][] arr) {
-        int sum = Arrays.stream(arr)
-                        .flatMapToInt(Arrays::stream)
-                        .sum();
-        System.out.println("\nSum of all elements: " + sum);
+        System.out.println("Flattened: " + Arrays.toString(Arrays.stream(arr).flatMapToInt(Arrays::stream).toArray()));
+        System.out.println("Sum: " + sum + " | Max: " + max);
     }
 }
