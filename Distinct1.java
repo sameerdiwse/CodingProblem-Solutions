@@ -1,20 +1,32 @@
 import java.util.Arrays;
 
 public class Distinct1 {
+
     public static void main(String[] args) {
 
         int[] arr = {1, 4, 23, 103, 54, 3, 21, 521, 90};
 
-        // Max value (most efficient)
-        int max = Arrays.stream(arr).max().orElseThrow();
+        if (arr.length == 0) {
+            System.out.println("Array is empty");
+            return;
+        }
+
+        // Fastest way — single pass
+        int max = arr[0];
+        for (int n : arr) {
+            if (n > max) {
+                max = n;
+            }
+        }
         System.out.println("Max Value: " + max);
 
-        // Highest element after sorting (if you really need sorted array)
-        int[] sortedDesc = Arrays.stream(arr)
-                                 .sorted()
-                                 .toArray();
-
-        int highest = sortedDesc[sortedDesc.length - 1];
-        System.out.println("Highest (via sort): " + highest);
+        // Second highest (no sorting, still O(n))
+        int secondMax = Integer.MIN_VALUE;
+        for (int n : arr) {
+            if (n > secondMax && n < max) {
+                secondMax = n;
+            }
+        }
+        System.out.println("Second Highest: " + secondMax);
     }
 }
