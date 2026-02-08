@@ -1,24 +1,26 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Duplicates {
 
     public static void main(String[] args) {
 
-        String[] names = {"Sameer", "Sameer", "akshay", "anku", "Narayan", "Bhujanga"};
+        String[] names = {"Sameer", "Sameer", "akshay", "Anku", "Narayan", "Bhujanga", "AKSHAY"};
 
-        Map<String, Integer> countMap = new HashMap<>();
+        Map<String, Long> duplicates =
+                Arrays.stream(names)
+                        .map(String::toLowerCase)              // case-insensitive
+                        .collect(Collectors.groupingBy(
+                                Function.identity(),
+                                TreeMap::new,                   // sorted output
+                                Collectors.counting()
+                        ));
 
-        // Count occurrences
-        for (String name : names) {
-            countMap.put(name, countMap.getOrDefault(name, 0) + 1);
-        }
-
-        // Print duplicates only
-        countMap.forEach((key, value) -> {
-            if (value > 1) {
-                System.out.println("Repeated Name: " + key + " -> " + value + " times");
-            }
-        });
+        duplicates.entrySet().stream()
+                .filter(e -> e.getValue() > 1)
+                .forEach(e ->
+                        System.out.println("Duplicate: " + e.getKey() + " -> " + e.getValue() + " times")
+                );
     }
 }
