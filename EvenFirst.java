@@ -1,36 +1,34 @@
-import java.util.Arrays;
-
 class EvenFirst {
 
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5,6,7,8,9,10};
-        int[] result = rearrangeEvenFirst(arr);
-        System.out.println(Arrays.toString(result));
+        firstEvenAndOdd(arr);
     }
 
-    public static int[] rearrangeEvenFirst(int[] input) {
+    public static void firstEvenAndOdd(int[] arr) {
 
-        if (input == null || input.length == 0) {
-            return new int[0];
-        }
+        int[] result = new int[arr.length];
+        int count = 0;
 
-        int[] result = new int[input.length];
-        int index = 0;
-
-        // Add even numbers first
-        for (int num : input) {
-            if (num % 2 == 0) {
-                result[index++] = num;
+        // First store even numbers
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 == 0) {
+                result[count] = arr[i];
+                count++;
             }
         }
 
-        // Add odd numbers next
-        for (int num : input) {
-            if (num % 2 != 0) {
-                result[index++] = num;
+        // Then store odd numbers
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 != 0) {
+                result[count] = arr[i];
+                count++;
             }
         }
 
-        return result;
+        // Print array properly
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + " ");
+        }
     }
 }
