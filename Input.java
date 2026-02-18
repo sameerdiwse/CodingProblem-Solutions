@@ -4,19 +4,31 @@ public class Input {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a number: ");
+        double number = 0;
 
-        if (sc.hasNextDouble()) {
-            double number = sc.nextDouble();
+        while (true) {
+            System.out.print("Enter a non-negative number (or type -1 to exit): ");
+
+            if (!sc.hasNextDouble()) {
+                System.out.println("Invalid input. Please enter a numeric value.");
+                sc.next(); // clear invalid input
+                continue;
+            }
+
+            number = sc.nextDouble();
+
+            if (number == -1) {
+                System.out.println("Exiting program. Goodbye.");
+                break;
+            }
 
             if (number < 0) {
                 System.out.println("Square root is not defined for negative numbers.");
-            } else {
-                double result = Math.sqrt(number);
-                System.out.printf("Square root of %.2f is %.4f%n", number, result);
+                continue;
             }
-        } else {
-            System.out.println("Invalid input. Please enter a numeric value.");
+
+            double result = Math.sqrt(number);
+            System.out.printf("Square root of %.2f is %.4f%n", number, result);
         }
 
         sc.close();
