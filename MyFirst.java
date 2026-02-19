@@ -1,15 +1,40 @@
-import java.util.*;
-import java.lang.*;
-import java.util.stream.*;
-class MyFirst
-{
-  public static void main(String [] args)
-  {
-   List<Integer> l = Arrays.asList(1,7,6,3,9,2);
-    List<Integer> num = l.stream().sorted(Comparator.reverseOrder()).filter(x->x>=3).collect(Collectors.toList());
-	for(Integer n : num)
-	{
-		System.out.println(n);
-	}
-  }
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class MyFirst {
+
+    public static void main(String[] args) {
+
+        // Original list
+        List<Integer> numbers = Arrays.asList(1, 7, 6, 3, 9, 2);
+
+        // Process list: filter >=3, sort descending
+        List<Integer> result = numbers.stream()
+                .filter(n -> n >= 3)
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+
+        // Print result using method reference
+        System.out.println("Filtered and sorted numbers:");
+        result.forEach(System.out::println);
+
+        // Additional enhancements
+        // 1. Get max number
+        result.stream()
+                .findFirst()
+                .ifPresent(max -> System.out.println("Max number: " + max));
+
+        // 2. Sum of numbers
+        int sum = result.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+
+        System.out.println("Sum: " + sum);
+
+        // 3. Count
+        long count = result.size();
+        System.out.println("Count: " + count);
+    }
 }
