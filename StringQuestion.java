@@ -1,15 +1,19 @@
-public class StringQuestion
-{
-	public static void main(String[] args) {
-		//Reverse words in given string
+public class StringQuestion {
+    public static void main(String[] args) {
 
-		String string = "I Love Java";
-		String[] str = string.split(" ");
-		String revString = "";	
-		for(int i = str.length-1; i>=0; i--)
-		{
-			revString+=str[i]+" ";
-		}
-		System.out.println("this is reversed string: "+revString);
-	}
+        // Reverse words in given string
+        String string = "I Love Java";
+        String[] words = string.split(" ");
+
+        StringBuilder revString = new StringBuilder();
+
+        for (int i = words.length - 1; i >= 0; i--) {
+            revString.append(words[i]);
+            if (i != 0) {
+                revString.append(" ");
+            }
+        }
+
+        System.out.println("Reversed string: " + revString.toString());
+    }
 }
