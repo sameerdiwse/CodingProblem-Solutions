@@ -1,19 +1,34 @@
 public class StringQuestion {
+
     public static void main(String[] args) {
 
-        // Reverse words in given string
-        String string = "I Love Java";
-        String[] words = string.split(" ");
+        String input = "I Love Java";
 
-        StringBuilder revString = new StringBuilder();
+        String reversed = reverseWords(input);
+
+        System.out.println("Original String : " + input);
+        System.out.println("Reversed String : " + reversed);
+    }
+
+    // Method to reverse words
+    public static String reverseWords(String input) {
+
+        if (input == null || input.trim().isEmpty()) {
+            return input;
+        }
+
+        String[] words = input.trim().split("\\s+");
+
+        StringBuilder result = new StringBuilder();
 
         for (int i = words.length - 1; i >= 0; i--) {
-            revString.append(words[i]);
+            result.append(words[i]);
+
             if (i != 0) {
-                revString.append(" ");
+                result.append(" ");
             }
         }
 
-        System.out.println("Reversed string: " + revString.toString());
+        return result.toString();
     }
 }
