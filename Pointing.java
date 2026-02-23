@@ -1,32 +1,29 @@
-import java.util.stream.*;
-import java.util.*;
-import java.lang.Integer;
+import java.util.stream.IntStream;
+
 class Pointing
 {
-  public static boolean isPrime(int i)
-  {
-	if(i<2)
-	{
-		return false;
-	}
-	for(int n = 2; n<=i/2; n++)
-	{
-		if(i%n==0)
-		{
-			return false;
-		}
-	}
-	return true;
-  }	
-	
-  public static void main(String [] args)
-  {
-    for(int i = 0; i<101; i++)
-	{
-		if(isPrime(i))
-		{
-			System.out.println(i + " is a prime number.");
-		}
-	}		
-  }
+    // Optimized prime check
+    public static boolean isPrime(int num)
+    {
+        if (num < 2)
+            return false;
+
+        // check only till sqrt(num) for efficiency
+        for (int i = 2; i <= Math.sqrt(num); i++)
+        {
+            if (num % i == 0)
+                return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args)
+    {
+        System.out.println("Prime numbers from 0 to 100:\n");
+
+        // Using Stream API (modern approach)
+        IntStream.rangeClosed(0, 100)
+                 .filter(Pointing::isPrime)
+                 .forEach(n -> System.out.println(n + " is a prime number."));
+    }
 }
