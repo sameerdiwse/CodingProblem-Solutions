@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.IntStream;
 
 public class Array01 {
 
@@ -8,7 +7,9 @@ public class Array01 {
         int[] arr = {1, 2, 8, 6, 7};
         int target = 9;
 
-        // Approach 1: Brute force (check every pair)
+        // ==============================
+        // Approach 1: Brute Force (O(n²))
+        // ==============================
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[i] + arr[j] == target) {
@@ -17,35 +18,30 @@ public class Array01 {
             }
         }
 
-        // Approach 2: Optimized using HashMap (O(n))
-        // Complement means the number required to reach the target
+        // ======================================
+        // Approach 2: Optimized using HashMap O(n)
+        // ======================================
         Map<Integer, Integer> map = new HashMap<>();
 
-        IntStream.range(0, arr.length).forEach(i -> {
+        for (int i = 0; i < arr.length; i++) {
 
             int complement = target - arr[i];
 
-            if (map.containsKey(arr[i])) {
+            if (map.containsKey(complement)) {
                 System.out.println("HashMap pair: " +
-                        arr[map.get(arr[i])] + " and " + arr[i]);
-            } else {
-                map.put(complement, i);
+                        complement + " and " + arr[i]);
             }
-        });
 
-        // Reverse a number
-        int x = 213;
-
-        char[] chr = String.valueOf(x).toCharArray();
-
-        String revString = "";
-
-        for (int j = chr.length - 1; j >= 0; j--) {
-            revString = revString.concat(String.valueOf(chr[j]));
+            map.put(arr[i], i);
         }
 
-        // Correct conversion and print reversed number
-        int reversedNumber = Integer.valueOf(revString);
+        // ======================
+        // Reverse a number
+        // ======================
+        int x = 213;
+
+        StringBuilder sb = new StringBuilder(String.valueOf(x));
+        int reversedNumber = Integer.parseInt(sb.reverse().toString());
 
         System.out.println("Reversed number is: " + reversedNumber);
     }
