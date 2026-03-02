@@ -1,18 +1,16 @@
-public class IntstreamProblem
-{
-	public static void main(String[] args) {
-	// Find the vowels in the string	
-	String str = "SomeString";
-	Character c;
-	int count = 0;
-		for(int i = 0; i<str.length(); i++)
-		{
-			c = Character.toLowerCase(str.charAt(i));
-			if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u')
-			{
-				count++;		
-			}
-		}
-		System.out.println("this is the count of vowels: "+count);
-	}	
+import java.util.stream.IntStream;
+
+public class IntStreamProblem {
+
+    public static void main(String[] args) {
+
+        String str = "SomeString";
+
+        long count = str.toLowerCase()
+                        .chars()
+                        .filter(c -> "aeiou".indexOf(c) != -1)
+                        .count();
+
+        System.out.println("This is the count of vowels: " + count);
+    }
 }
