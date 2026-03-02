@@ -1,16 +1,19 @@
-import java.util.stream.IntStream;
+import java.util.Set;
 
 public class IntStreamProblem {
+
+    private static final Set<Character> VOWELS = Set.of('a','e','i','o','u');
 
     public static void main(String[] args) {
 
         String str = "SomeString";
 
-        long count = str.toLowerCase()
-                        .chars()
-                        .filter(c -> "aeiou".indexOf(c) != -1)
-                        .count();
+        long count = str == null ? 0 :
+                str.chars()
+                   .map(Character::toLowerCase)
+                   .filter(c -> VOWELS.contains((char) c))
+                   .count();
 
-        System.out.println("This is the count of vowels: " + count);
+        System.out.println("Vowel count: " + count);
     }
 }
