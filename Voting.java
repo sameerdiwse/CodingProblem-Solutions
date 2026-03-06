@@ -1,35 +1,54 @@
+import java.util.Scanner;
+
 // Custom Exception
-class CustomEx extends Exception {
-    public CustomEx(String message) {
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
         super(message);
     }
 }
 
 public class Voting {
 
-    // Method to check voting eligibility
-    public static void checkEligibility(int age) throws CustomEx {
-        if (age < 18) {
-            throw new CustomEx("You are not eligible to vote. Minimum age is 18.");
-        } else {
-            System.out.println("You are eligible to vote.");
+    private static final int MIN_VOTING_AGE = 18;
+
+    // Business logic method
+    public static void validateVotingEligibility(int age) throws InvalidAgeException {
+
+        if (age < 0) {
+            throw new InvalidAgeException("Age cannot be negative.");
         }
+
+        if (age < MIN_VOTING_AGE) {
+            throw new InvalidAgeException(
+                "You are not eligible to vote. Minimum voting age is " + MIN_VOTING_AGE
+            );
+        }
+
+        System.out.println("Eligible to vote.");
     }
 
     public static void main(String[] args) {
 
-        int age = 16;
+        Scanner sc = new Scanner(System.in);
 
         try {
-            checkEligibility(age);
+            System.out.print("Enter your age: ");
+            int age = sc.nextInt();
+
+            validateVotingEligibility(age);
+
         } 
-        catch (CustomEx e) {
-            System.out.println("Exception: " + e.getMessage());
+        catch (InvalidAgeException e) {
+            System.out.println("Validation Error: " + e.getMessage());
+        } 
+        catch (Exception e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
         } 
         finally {
+            sc.close();
             System.out.println("Voting eligibility check completed.");
         }
 
-        System.out.println("Program execution continues...");
+        System.out.println("Program finished successfully.");
     }
 }
