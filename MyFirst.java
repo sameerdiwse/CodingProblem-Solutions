@@ -7,34 +7,37 @@ public class MyFirst {
 
     public static void main(String[] args) {
 
-        // Original list
         List<Integer> numbers = Arrays.asList(1, 7, 6, 3, 9, 2);
 
-        // Process list: filter >=3, sort descending
+        // Filter >=3 and sort descending
         List<Integer> result = numbers.stream()
                 .filter(n -> n >= 3)
                 .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
+                .toList();
 
-        // Print result using method reference
         System.out.println("Filtered and sorted numbers:");
         result.forEach(System.out::println);
 
-        // Additional enhancements
-        // 1. Get max number
-        result.stream()
-                .findFirst()
-                .ifPresent(max -> System.out.println("Max number: " + max));
+        // Max number
+        int max = result.stream()
+                .max(Integer::compareTo)
+                .orElse(0);
+        System.out.println("Max number: " + max);
 
-        // 2. Sum of numbers
+        // Sum
         int sum = result.stream()
                 .mapToInt(Integer::intValue)
                 .sum();
-
         System.out.println("Sum: " + sum);
 
-        // 3. Count
-        long count = result.size();
+        // Count
+        long count = result.stream().count();
         System.out.println("Count: " + count);
+
+        // Average
+        result.stream()
+                .mapToInt(Integer::intValue)
+                .average()
+                .ifPresent(avg -> System.out.println("Average: " + avg));
     }
 }
