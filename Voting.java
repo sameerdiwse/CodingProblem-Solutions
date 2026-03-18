@@ -1,3 +1,4 @@
+import java.util.Optional;
 import java.util.Scanner;
 
 // Custom Exception
@@ -7,55 +8,71 @@ class InvalidAgeException extends Exception {
     }
 }
 
-// Enum for eligibility
+// Enum
 enum VotingStatus {
     ELIGIBLE,
     NOT_ELIGIBLE
 }
 
-// Service class
+// Service
 class VotingService {
 
     private static final int MIN_VOTING_AGE = 18;
 
     public static VotingStatus checkEligibility(int age) throws InvalidAgeException {
+        validateAge(age);
+        return age >= MIN_VOTING_AGE ? VotingStatus.ELIGIBLE : VotingStatus.NOT_ELIGIBLE;
+    }
+
+    private static void validateAge(int age) throws InvalidAgeException {
         if (age < 0) {
             throw new InvalidAgeException("Age cannot be negative.");
         }
-        return age >= MIN_VOTING_AGE 
-                ? VotingStatus.ELIGIBLE 
-                : VotingStatus.NOT_ELIGIBLE;
+        if (age > 120) {
+            throw new InvalidAgeException("Age seems unrealistic.");
+        }
     }
 }
 
+// Utility for input
+class InputUtil {
+
+    public static Optional<Integer> readAge(Scanner sc) {
+        System.out.print("Enter your age: ");
+        return sc.hasNextInt() ? Optional.of(sc.nextInt()) : Optional.empty();
+    }
+}
+
+// Main
 public class Voting {
 
     public static void main(String[] args) {
 
         try (Scanner sc = new Scanner(System.in)) {
 
-            System.out.print("Enter your age: ");
+            Optional<Integer> ageOpt = InputUtil.readAge(sc);
 
-            if (!sc.hasNextInt()) {
-                throw new IllegalArgumentException("Invalid input. Please enter a number.");
+            if (ageOpt.isEmpty()) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                return;
             }
 
-            int age = sc.nextInt();
+            VotingStatus status = VotingService.checkEligibility(ageOpt.get());
 
-            VotingStatus status = VotingService.checkEligibility(age);
-
-            System.out.println(
-                status == VotingStatus.ELIGIBLE
-                        ? "You are eligible to vote."
-                        : "You are not eligible to vote yet."
-            );
+            printResult(status);
 
         } catch (InvalidAgeException e) {
             System.out.println("Business Exception: " + e.getMessage());
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
         } finally {
             System.out.println("Voting eligibility check completed.");
         }
+    }
+
+    private static void printResult(VotingStatus status) {
+        String message = switch (status) {
+            case ELIGIBLE -> "You are eligible to vote.";
+            case NOT_ELIGIBLE -> "You are not eligible to vote yet.";
+        };
+        System.out.println(message);
     }
 }
