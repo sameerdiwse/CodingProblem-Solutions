@@ -7,28 +7,24 @@ class InvalidAgeException extends Exception {
     }
 }
 
-// Enum to represent eligibility status
+// Enum for eligibility
 enum VotingStatus {
     ELIGIBLE,
     NOT_ELIGIBLE
 }
 
-// Service class for voting logic
+// Service class
 class VotingService {
 
     private static final int MIN_VOTING_AGE = 18;
 
     public static VotingStatus checkEligibility(int age) throws InvalidAgeException {
-
         if (age < 0) {
             throw new InvalidAgeException("Age cannot be negative.");
         }
-
-        if (age < MIN_VOTING_AGE) {
-            return VotingStatus.NOT_ELIGIBLE;
-        }
-
-        return VotingStatus.ELIGIBLE;
+        return age >= MIN_VOTING_AGE 
+                ? VotingStatus.ELIGIBLE 
+                : VotingStatus.NOT_ELIGIBLE;
     }
 }
 
@@ -36,30 +32,29 @@ public class Voting {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        try (Scanner sc = new Scanner(System.in)) {
 
-        try {
             System.out.print("Enter your age: ");
+
+            if (!sc.hasNextInt()) {
+                throw new IllegalArgumentException("Invalid input. Please enter a number.");
+            }
+
             int age = sc.nextInt();
 
             VotingStatus status = VotingService.checkEligibility(age);
 
-            switch (status) {
-                case ELIGIBLE:
-                    System.out.println("You are eligible to vote.");
-                    break;
-
-                case NOT_ELIGIBLE:
-                    System.out.println("You are not eligible to vote yet.");
-                    break;
-            }
+            System.out.println(
+                status == VotingStatus.ELIGIBLE
+                        ? "You are eligible to vote."
+                        : "You are not eligible to vote yet."
+            );
 
         } catch (InvalidAgeException e) {
             System.out.println("Business Exception: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Invalid input. Please enter a valid number.");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         } finally {
-            sc.close();
             System.out.println("Voting eligibility check completed.");
         }
     }
