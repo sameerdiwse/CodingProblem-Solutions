@@ -1,47 +1,65 @@
 import java.util.Arrays;
 
-class EvenFirst {
+public class EvenOddUtils {
 
     public static void main(String[] args) {
 
         int[] arr = {1,2,3,4,5,6,7,8,9,10};
 
-        System.out.println("Original Array:");
-        print(arr);
+        System.out.println("Original: " + Arrays.toString(arr));
 
-        rearrange(arr);
+        rearrangeInPlace(arr);
+        System.out.println("In-place (fast): " + Arrays.toString(arr));
 
-        System.out.println("\nRearranged Array (Even first, Odd last):");
-        print(arr);
+        int[] stable = rearrangeStable(arr);
+        System.out.println("Stable (order preserved): " + Arrays.toString(stable));
     }
 
-    // In-place rearrangement
-    public static void rearrange(int[] arr) {
+    // 🔥 Fast, in-place (O(1) space, not stable)
+    public static void rearrangeInPlace(int[] arr) {
 
-        int left = 0;
-        int right = arr.length - 1;
+        int left = 0, right = arr.length - 1;
 
         while (left < right) {
 
-            if (arr[left] % 2 == 0) {
-                left++; // already even, correct place
-            } 
-            else if (arr[right] % 2 != 0) {
-                right--; // already odd, correct place
-            } 
-            else {
-                // swap odd (left) with even (right)
-                int temp = arr[left];
-                arr[left] = arr[right];
-                arr[right] = temp;
+            while (left < right && isEven(arr[left])) left++;
+            while (left < right && !isEven(arr[right])) right--;
 
+            if (left < right) {
+                swap(arr, left, right);
                 left++;
                 right--;
             }
         }
     }
 
-    public static void print(int[] arr) {
-        System.out.println(Arrays.toString(arr));
+    // 🧠 Stable version (O(n) space)
+    public static int[] rearrangeStable(int[] arr) {
+
+        int[] result = new int[arr.length];
+        int index = 0;
+
+        // add evens first
+        for (int num : arr) {
+            if (isEven(num)) result[index++] = num;
+        }
+
+        // then odds
+        for (int num : arr) {
+            if (!isEven(num)) result[index++] = num;
+        }
+
+        return result;
+    }
+
+    // 🧩 Utility methods
+    private static boolean isEven(int n) {
+        return (n & 1) == 0; // bitwise check (faster than %)
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
