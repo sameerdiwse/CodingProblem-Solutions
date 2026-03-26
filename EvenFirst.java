@@ -15,26 +15,33 @@ class EvenFirst {
         print(arr);
     }
 
+    // In-place rearrangement
     public static void rearrange(int[] arr) {
 
-        int[] result = new int[arr.length];
         int left = 0;
         int right = arr.length - 1;
 
-        for (int num : arr) {
+        while (left < right) {
 
-            if (num % 2 == 0) {
-                result[left++] = num;
-            } else {
-                result[right--] = num;
+            if (arr[left] % 2 == 0) {
+                left++; // already even, correct place
+            } 
+            else if (arr[right] % 2 != 0) {
+                right--; // already odd, correct place
+            } 
+            else {
+                // swap odd (left) with even (right)
+                int temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+
+                left++;
+                right--;
             }
         }
-
-        // copy result back to original array
-        System.arraycopy(result, 0, arr, 0, arr.length);
     }
 
     public static void print(int[] arr) {
-        Arrays.stream(arr).forEach(n -> System.out.print(n + " "));
+        System.out.println(Arrays.toString(arr));
     }
 }
