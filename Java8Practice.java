@@ -28,62 +28,80 @@ public class Practice {
 			new Employee(20, "Tina", "Finance", 56000, 27, "Female", LocalDate.of(2024, 2, 5)));
         );
 
-        // Employees with salary > 50k
+        // 1. Salary > 50k
         List<Employee> highSalary = employees.stream()
                 .filter(e -> e.getSalary() > 50000)
                 .toList();
 
-        // Names list
+        // 2. Names
         List<String> names = employees.stream()
                 .map(Employee::getName)
                 .toList();
 
-        // Distinct departments
-        List<String> departments = employees.stream()
+        // 3. Distinct departments
+        List<String> depts = employees.stream()
                 .map(Employee::getDepartment)
                 .distinct()
                 .toList();
 
-        // Names starting with A
-        List<String> namesWithA = employees.stream()
+        // 4. Names starting with A
+        List<String> startsWithA = employees.stream()
                 .map(Employee::getName)
                 .filter(n -> n.startsWith("A"))
                 .toList();
 
-        // Highest salary
+        // 5. Highest salary
         employees.stream()
                 .max(Comparator.comparing(Employee::getSalary))
                 .ifPresent(e -> System.out.println("Highest: " + e.getName()));
 
-        // Lowest salary
+        // 6. Lowest salary
         employees.stream()
                 .min(Comparator.comparing(Employee::getSalary))
                 .ifPresent(e -> System.out.println("Lowest: " + e.getName()));
 
-        // Any salary > 100k
-        boolean hasHighPackage = employees.stream()
+        // 7. Any >100k
+        boolean anyHigh = employees.stream()
                 .anyMatch(e -> e.getSalary() > 100000);
 
-        System.out.println("Any >100k: " + hasHighPackage);
-
-        // Count age > 30
+        // 8. Count age > 30
         long count = employees.stream()
                 .filter(e -> e.getAge() > 30)
                 .count();
 
-        System.out.println("Age >30 count: " + count);
-
-        // First joined
+        // 9. First joined
         employees.stream()
                 .min(Comparator.comparing(Employee::getJoiningDate))
-                .ifPresent(e -> System.out.println("First joined: " + e.getName()));
+                .ifPresent(e -> System.out.println("First: " + e.getName()));
 
-        // Latest joined
+        // 10. Latest joined
         employees.stream()
                 .max(Comparator.comparing(Employee::getJoiningDate))
-                .ifPresent(e -> System.out.println("Latest joined: " + e.getName()));
+                .ifPresent(e -> System.out.println("Latest: " + e.getName()));
 
-        // Max in array (no boxing needed)
+        // 11. Group by department
+        Map<String, List<Employee>> byDept = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment));
+
+        // 12. Avg salary per department
+        Map<String, Double> avgSalary = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::getDepartment,
+                        Collectors.averagingDouble(Employee::getSalary)
+                ));
+
+        // 13. Highest paid per department 🔥
+        Map<String, Optional<Employee>> topByDept = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::getDepartment,
+                        Collectors.maxBy(Comparator.comparing(Employee::getSalary))
+                ));
+
+        topByDept.forEach((dept, emp) ->
+                emp.ifPresent(e -> System.out.println(dept + " -> " + e.getName()))
+        );
+
+        // 14. Max in array (optimized)
         int[] arr = {1, 4, 23, 103, 54, 3, 21, 90};
         int max = Arrays.stream(arr).max().orElse(-1);
 
