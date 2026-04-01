@@ -2,7 +2,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 // Custom Exception
-class InvalidAgeException extends Exception {
+class InvalidAgeException extends RuntimeException {
     public InvalidAgeException(String message) {
         super(message);
     }
@@ -11,7 +11,14 @@ class InvalidAgeException extends Exception {
 // Enum
 enum VotingStatus {
     ELIGIBLE,
-    NOT_ELIGIBLE
+    NOT_ELIGIBLE;
+
+    public String message() {
+        return switch (this) {
+            case ELIGIBLE -> "You are eligible to vote.";
+            case NOT_ELIGIBLE -> "You are not eligible to vote yet.";
+        };
+    }
 }
 
 // Service
@@ -19,12 +26,12 @@ class VotingService {
 
     private static final int MIN_VOTING_AGE = 18;
 
-    public static VotingStatus checkEligibility(int age) throws InvalidAgeException {
+    public static VotingStatus checkEligibility(int age) {
         validateAge(age);
         return age >= MIN_VOTING_AGE ? VotingStatus.ELIGIBLE : VotingStatus.NOT_ELIGIBLE;
     }
 
-    private static void validateAge(int age) throws InvalidAgeException {
+    private static void validateAge(int age) {
         if (age < 0) {
             throw new InvalidAgeException("Age cannot be negative.");
         }
@@ -34,12 +41,16 @@ class VotingService {
     }
 }
 
-// Utility for input
+// Utility
 class InputUtil {
 
     public static Optional<Integer> readAge(Scanner sc) {
         System.out.print("Enter your age: ");
-        return sc.hasNextInt() ? Optional.of(sc.nextInt()) : Optional.empty();
+        if (sc.hasNextInt()) {
+            return Optional.of(sc.nextInt());
+        }
+        sc.next(); // consume invalid input
+        return Optional.empty();
     }
 }
 
@@ -50,29 +61,24 @@ public class Voting {
 
         try (Scanner sc = new Scanner(System.in)) {
 
-            Optional<Integer> ageOpt = InputUtil.readAge(sc);
+            Optional<Integer> ageOpt;
 
-            if (ageOpt.isEmpty()) {
-                System.out.println("Invalid input. Please enter a valid number.");
-                return;
-            }
+            // Retry until valid input
+            do {
+                ageOpt = InputUtil.readAge(sc);
+                if (ageOpt.isEmpty()) {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                }
+            } while (ageOpt.isEmpty());
 
-            VotingStatus status = VotingService.checkEligibility(ageOpt.get());
+            VotingStatus status = VotingService.checkEligibility(ageOpt.orElseThrow());
 
-            printResult(status);
+            System.out.println(status.message());
 
         } catch (InvalidAgeException e) {
-            System.out.println("Business Exception: " + e.getMessage());
+            System.out.println("Validation Error: " + e.getMessage());
         } finally {
             System.out.println("Voting eligibility check completed.");
         }
-    }
-
-    private static void printResult(VotingStatus status) {
-        String message = switch (status) {
-            case ELIGIBLE -> "You are eligible to vote.";
-            case NOT_ELIGIBLE -> "You are not eligible to vote yet.";
-        };
-        System.out.println(message);
     }
 }
